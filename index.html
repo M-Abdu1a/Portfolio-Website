@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ab — Data Student & BI Enthusiast</title>
+<title>Abdullah Haroon | Data Projects</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -15,24 +15,24 @@
     font-display:swap;
   }
   :root {
-    --bg:#fbf4df; --bg2:#efe4cc; --bg3:#e4d5bf;
-    --purple:#A45A3D; --purple-lt:#B9775F; --purple-dim:#E8DAB2;
-    --accent:#A45A3D; --yellow:#D9BF77; --white:#3F2818;
-    --muted:#745D49; --card-bg:#fffaf0; --border:rgba(107,66,38,0.16); --radius:12px;
+    --bg:#fbf8f1; --bg2:#f1ede3; --bg3:#e4ddd0;
+    --purple:#8F4B38; --purple-lt:#AD6B56; --purple-dim:#EADFC4;
+    --accent:#8F4B38; --yellow:#DEC477; --white:#2F2A25;
+    --muted:#6F665D; --card-bg:#fffdf7; --border:rgba(74,57,42,0.14); --radius:10px;
   }
   html { scroll-behavior: smooth; }
   body { background:var(--bg); color:var(--white); font-family:'Inter',sans-serif; font-size:16px; line-height:1.6; overflow-x:hidden; }
 
   /* NAV */
   nav { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; align-items:center; justify-content:space-between; padding:0 5%; height:64px; background:rgba(251,244,223,0.92); backdrop-filter:blur(12px); border-bottom:1px solid var(--border); box-shadow:0 10px 30px rgba(107,66,38,0.08); }
-  .nav-logo { font-family:'Waltograph','Inter',cursive; font-size:2rem; font-weight:400; color:var(--white); text-decoration:none; letter-spacing:0; line-height:1; }
+  .nav-logo { font-family:'Inter',sans-serif; font-size:1.05rem; font-weight:800; color:var(--white); text-decoration:none; letter-spacing:.01em; line-height:1; }
   .nav-logo span { color:var(--accent); }
   .nav-links { display:flex; gap:2rem; list-style:none; }
   .nav-links a { color:var(--muted); text-decoration:none; font-size:0.9rem; font-weight:500; transition:color .2s; }
   .nav-links a:hover { color:var(--white); }
   .nav-right { display:flex; gap:.75rem; align-items:center; }
-  .nav-resume { background:transparent; color:var(--accent); border:1.5px solid var(--accent); border-radius:8px; padding:.45rem 1.1rem; font-size:.85rem; font-weight:600; cursor:pointer; text-decoration:none; transition:background .2s,color .2s; }
-  .nav-resume:hover { background:var(--accent); color:#fff; }
+  .nav-resume { background:var(--purple); color:#fff; border:none; border-radius:8px; padding:.5rem 1.25rem; font-size:.875rem; font-weight:600; cursor:pointer; text-decoration:none; transition:background .2s; }
+  .nav-resume:hover { background:var(--purple-lt); color:#fff; }
   .nav-cta { background:var(--purple); color:#fff; border:none; border-radius:8px; padding:.5rem 1.25rem; font-size:.875rem; font-weight:600; cursor:pointer; text-decoration:none; transition:background .2s; }
   .nav-cta:hover { background:var(--purple-lt); }
 
@@ -43,7 +43,7 @@
   .hero-eyebrow::before { content:''; width:2rem; height:2px; background:var(--accent); }
   .hero h1 { font-family:'Inter',sans-serif; font-size:clamp(2.6rem,6vw,5rem); font-weight:800; line-height:1.05; letter-spacing:0; max-width:780px; margin-bottom:1.5rem; }
   .hero h1 .underline { position:relative; color:var(--yellow); display:inline-block; }
-  .hero h1 .underline::after { content:''; position:absolute; left:0; bottom:-4px; width:100%; height:4px; background:var(--yellow); border-radius:2px; }
+  .hero h1 .underline::after { content:''; position:absolute; left:0; bottom:-8px; width:100%; height:7px; background:var(--yellow); border-radius:3px; }
   .hero p { color:var(--muted); font-size:1.05rem; max-width:520px; margin-bottom:2rem; line-height:1.75; }
   .hero-btns { display:flex; gap:1rem; flex-wrap:wrap; align-items:center; }
   .btn-primary { background:var(--purple); color:#fff; border:none; border-radius:8px; padding:.75rem 1.75rem; font-size:.95rem; font-weight:600; cursor:pointer; text-decoration:none; transition:background .2s,transform .15s; }
@@ -112,6 +112,9 @@
 
   .project-card { background:var(--card-bg); border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; transition:border-color .25s,transform .08s ease-out,box-shadow .25s; will-change:transform; }
   .project-card:hover { border-color:var(--purple-lt); box-shadow:0 16px 40px rgba(107,66,38,0.14); }
+  .project-card:not(:first-child):not(:last-child) { display:none; }
+  .projects-grid .project-card:first-child { border:1px solid rgba(143,75,56,.32); box-shadow:0 12px 30px rgba(74,57,42,.10); }
+  .projects-grid .github-link { display:none; }
 
   /* RIPPLE */
   .btn-primary, .btn-outline, .nav-cta, .nav-resume, .btn-dl { position:relative; overflow:hidden; }
@@ -122,7 +125,8 @@
   .stat-num { transition:transform .2s; }
   .stat:hover .stat-num { transform:scale(1.08); }
   .project-thumb { width:100%; aspect-ratio:16/10; display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; }
-  .project-card:nth-child(3n+1) .project-thumb { background:linear-gradient(135deg,#E8DAB2,#D9BF77); }
+  .project-card-image { width:92%; height:88%; object-fit:contain; display:block; margin:auto; border:1px solid rgba(74,57,42,.18); }
+  .project-card:nth-child(3n+1) .project-thumb { background:linear-gradient(135deg,#E8DAB2,#E8D48A); }
   .project-card:nth-child(3n+2) .project-thumb { background:linear-gradient(135deg,#F6EED7,#C4B6A6); }
   .project-card:nth-child(3n)   .project-thumb { background:linear-gradient(135deg,#E8DAB2,#D3B39A); }
   .project-thumb-inner { width:85%; background:rgba(255,250,240,.68); border-radius:6px; border:1px solid rgba(107,66,38,.15); padding:.75rem; display:flex; flex-direction:column; gap:.35rem; }
@@ -151,14 +155,15 @@
 
   /* TOOL LOGOS */
   .tool-logo { display:inline-flex; align-items:center; gap:.55rem; font-size:.8rem; font-weight:600; background:var(--bg3); color:var(--white); border:1px solid var(--border); border-radius:999px; padding:.35rem .75rem; }
-  .tool-logo svg { width:18px; height:18px; flex-shrink:0; }
+  .tool-logo svg, .tool-logo .brand-logo { width:18px; height:18px; flex-shrink:0; }
+  .tool-logo .brand-logo, .stack-pill .brand-logo { object-fit:contain; }
 
   /* STACK PILLS with logos */
   .stack-pills { display:flex; flex-wrap:wrap; gap:1rem; margin-top:2rem; }
   .stack-pill { background:var(--card-bg); border:1px solid var(--border); border-radius:var(--radius); padding:.85rem 1.2rem; display:flex; align-items:center; gap:.75rem; font-size:.95rem; font-weight:700; color:var(--white); transition:border-color .2s, transform .2s; }
   .stack-pill:hover { transform:translateY(-2px); }
   .stack-pill:hover { border-color:var(--accent); }
-  .stack-pill svg { width:20px; height:20px; flex-shrink:0; }
+  .stack-pill svg, .stack-pill .brand-logo { width:20px; height:20px; flex-shrink:0; }
 
   /* CONTACT */
   .contact-section { background:var(--bg2); text-align:center; }
@@ -167,6 +172,7 @@
   .contact-links { display:flex; flex-direction:column; gap:.75rem; align-items:center; }
   .contact-link { display:flex; align-items:center; gap:.75rem; color:var(--muted); font-size:.9rem; text-decoration:none; transition:color .2s; }
   .contact-link:hover { color:var(--accent); }
+  .contact-link svg { width:22px; height:22px; flex-shrink:0; fill:currentColor; }
   .resume-row { margin-top:1.5rem; padding-top:1.5rem; border-top:1px solid var(--border); }
   .resume-row p { font-size:.8rem; color:var(--muted); margin-bottom:.85rem; }
   .btn-dl { display:inline-flex; align-items:center; gap:.5rem; background:var(--purple); color:#fff; border:none; border-radius:8px; padding:.7rem 1.5rem; font-size:.9rem; font-weight:600; cursor:pointer; text-decoration:none; transition:background .2s; }
@@ -468,47 +474,78 @@
     .hero h1 { font-size:2rem; }
     .stats { grid-template-columns:1fr; }
   }
+
+  /* REFERENCE THEME */
+  :root {
+    --bg:#fcfbff; --bg2:#f7f4ff; --bg3:#eee9ff;
+    --purple:#7c3aed; --purple-lt:#8b5cf6; --purple-dim:#ede9fe;
+    --accent:#7c3aed; --yellow:#a78bfa; --white:#0b1020;
+    --muted:#667085; --card-bg:#ffffff; --border:rgba(98,74,170,.14); --radius:12px;
+  }
+  body { background:var(--bg); color:var(--white); }
+  nav { background:rgba(252,251,255,.9); box-shadow:0 10px 30px rgba(91,63,160,.08); }
+  .nav-logo { font-size:1.1rem; }
+  .nav-links { gap:1.5rem; }
+  .nav-links a:hover { color:var(--accent); }
+  .nav-resume, .nav-cta { background:var(--purple); color:#fff; border-color:var(--purple); }
+  .nav-resume:hover, .nav-cta:hover { background:var(--purple-lt); color:#fff; border-color:var(--purple-lt); }
+  .hero {
+    padding-top:142px;
+    background:
+      radial-gradient(circle at 12% 0%, rgba(196,181,253,.34), transparent 34%),
+      radial-gradient(circle at 88% 12%, rgba(221,214,254,.42), transparent 32%),
+      linear-gradient(180deg,#f1ebff 0%,var(--bg) 84%);
+  }
+  .hero h1 { max-width:1000px; font-size:clamp(2.8rem,6.3vw,5.7rem); letter-spacing:-.04em; }
+  .hero h1 .underline { color:var(--purple); }
+  .hero h1 .underline::after { background:#c4b5fd; height:8px; }
+  .hero p, .section-sub { color:var(--muted); }
+  .hero-eyebrow, .section-eyebrow, .hero-aside p strong { color:var(--purple); }
+  .hero-eyebrow::before { background:var(--purple); }
+  .btn-primary, .btn-dl { background:var(--purple); }
+  .btn-primary:hover, .btn-dl:hover { background:var(--purple-lt); }
+  .btn-outline { color:var(--white); border-color:rgba(98,74,170,.22); background:rgba(255,255,255,.5); }
+  .btn-outline:hover { border-color:var(--purple); color:var(--purple); }
+  .stats { background:var(--bg2); }
+  .stat-num span, .project-link { color:var(--purple); }
+  .skill-card, .project-card, .contact-card { background:var(--card-bg); box-shadow:0 12px 30px rgba(91,63,160,.06); }
+  .skill-card:hover, .project-card:hover { border-color:rgba(124,58,237,.42); box-shadow:0 18px 40px rgba(91,63,160,.12); }
+  .project-card:nth-child(3n+1) .project-thumb { background:linear-gradient(135deg,#eee9ff,#ddd6fe); }
+  .project-card:nth-child(3n+2) .project-thumb { background:linear-gradient(135deg,#f5f3ff,#e9d5ff); }
+  .project-card:nth-child(3n) .project-thumb { background:linear-gradient(135deg,#ede9fe,#dbeafe); }
+  .project-tag { background:rgba(124,58,237,.88); }
+  .project-domain, .tool-logo { background:#f5f3ff; border-color:rgba(98,74,170,.14); }
+  .github-link { background:var(--bg3); }
+  .github-link:hover, .contact-link:hover, .footer-links a:hover { color:var(--purple); border-color:var(--purple); }
+  .contact-section { background:var(--bg2); }
+  .contact-card { border-radius:12px; }
+  footer { background:var(--bg); }
+  .modal-overlay { background:rgba(49,36,91,.24); }
+  .modal { background:var(--bg2); }
 </style>
 </head>
 <body>
 
 <!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo">Data with Abdullah<span>.</span></a>
-  <ul class="nav-links">
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
+  <a href="#" class="nav-logo">Portfolio</a>
   <div class="nav-right">
-    <a href="./resume.pdf" target="_blank" rel="noopener" class="nav-resume">📄 Resume</a>
-    <a href="#contact" class="nav-cta">Say Hello</a>
+    <a href="./resume.pdf" target="_blank" rel="noopener" class="nav-resume">Resume</a>
+    <a href="#contact" class="nav-cta">Contact me</a>
   </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-eyebrow">3rd Year Data Student · Dubai, UAE</div>
-  <h1>Engineering raw datasets into<br> <span class="underline">actionable</span> project visual insights</h1>
-  <p>I'm a third-year university student passionate about data analytics and business intelligence. I learn by doing — every project here is something I built to solve a real problem or explore a concept hands-on.</p>
-  <div class="hero-btns">
-    <a href="#projects" class="btn-primary">See My Projects</a>
-    <a href="#contact" class="btn-outline">Get In Touch</a>
-  </div>
-  <div class="hero-aside">
-    <div class="arrow">↓</div>
-    <p><strong>Still learning. Always building.</strong><br>SQL · Python · Power BI · Tableau</p>
-  </div>
+  <h1>Some of the things<br> <span class="underline">I've made with data</span></h1>
 </section>
 
 <!-- PROJECTS -->
 <section class="section" id="projects" style="background:var(--bg2)">
   <div class="projects-header fade-in">
     <div>
-      <div class="section-eyebrow">Portfolio</div>
       <h2 class="section-heading">Projects </h2>
-      <p style="color:var(--muted);font-size:.9rem;margin-top:.5rem;">Short summaries are here for quick scanning. Each project links to a dedicated case study page with the full process.</p>
+      <p style="color:var(--muted);font-size:.9rem;margin-top:.5rem;">Click a project title to view more information.</p>
     </div>
   </div>
 
@@ -517,21 +554,13 @@
     <!-- CARD 1 -->
     <article class="project-card fade-in">
       <div class="project-thumb">
-        <span class="project-tag">Power BI</span><span class="project-domain">Retail</span>
-        <div class="project-thumb-inner">
-          <div class="thumb-bar a1"></div><div class="thumb-bar" style="width:80%"></div>
-          <div class="thumb-row"><div class="thumb-box f1"></div><div class="thumb-box"></div><div class="thumb-box f1"></div></div>
-          <div class="thumb-bar a2" style="margin-top:.25rem"></div>
-          <div class="thumb-row"><div class="thumb-box"></div><div class="thumb-box f2"></div></div>
-        </div>
+        <img class="project-card-image" src="projects/images/Dashboard.png" alt="AtliQ hospitality dashboard preview">
       </div>
       <div class="project-body">
-        <h3><a class="project-title-link" href="projects/retail-sales-dashboard.html">Retail Sales Dashboard</a></h3>
-        <p>End-to-end Power BI project from raw sales data to an interactive executive dashboard with DAX KPIs.</p>
+        <h3><a class="project-title-link" href="projects/retail-sales-dashboard.html">AtliQ Hospitality Dashboard</a></h3>
+        <p>End-to-end Power BI project analysing hotel revenue, occupancy, RevPAR, booking channels, and property performance.</p>
         <div class="project-tools">
           <span class="tool-logo"><!-- Power BI SVG --><svg viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#F2C811"/><rect x="8" y="18" width="4" height="8" rx="1" fill="#333"/><rect x="14" y="12" width="4" height="14" rx="1" fill="#333"/><rect x="20" y="6" width="4" height="20" rx="1" fill="#333"/></svg>Power BI</span>
-          <span class="tool-logo"><svg viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#0078d4"/><text x="4" y="22" font-size="14" font-weight="bold" fill="white" font-family="monospace">SQL</text></svg>SQL</span>
-          <span class="tool-logo"><svg viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#1d6f42"/><text x="6" y="22" font-size="13" font-weight="bold" fill="white" font-family="sans-serif">XL</text></svg>Excel</span>
         </div>
         <div class="project-actions">
           <a class="project-link" href="projects/retail-sales-dashboard.html">Read case study</a>
@@ -664,41 +693,28 @@
       </div>
     </article>
 
-  </div>
-</section>
-
-
-
-
-<!-- ABOUT -->
-<section class="section" id="about">
-  <div class="about-split">
-    <div class="fade-in">
-      <div class="about-img-placeholder">👤</div>
-      <div class="edu-card">
-        <div class="edu-icon">🎓</div>
-        <div>
-          <div class="edu-label">Currently Studying</div>
-          <div class="edu-name">BSc Data Analytics</div>
-          <div class="edu-sub">3rd Year · Middlesex University · 2024–2027</div>
+    <!-- CARD 7 -->
+    <article class="project-card fade-in">
+      <div class="project-thumb">
+        <img class="project-card-image" src="projects/images/Sql Data Analytics Project.png" alt="SQL data analyst portfolio project dashboard preview">
+      </div>
+      <div class="project-body">
+        <h3><a class="project-title-link" href="projects/sql-data-analyst-portfolio-project.html">SQL Data Analyst Portfolio Project</a></h3>
+        <p>SQL analytics project transforming raw business data into clear insights for reporting and decision-making.</p>
+        <div class="project-tools">
+          <span class="tool-logo"><svg viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#0078d4"/><text x="4" y="22" font-size="14" font-weight="bold" fill="white" font-family="monospace">SQL</text></svg>SQL</span>
+          <span class="tool-logo"><svg viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#F2C811"/><rect x="8" y="18" width="4" height="8" rx="1" fill="#333"/><rect x="14" y="12" width="4" height="14" rx="1" fill="#333"/><rect x="20" y="6" width="4" height="20" rx="1" fill="#333"/></svg>Power BI</span>
+        </div>
+        <div class="project-actions">
+          <a class="project-link" href="projects/sql-data-analyst-portfolio-project.html">Read case study</a>
+          <a class="github-link" href="https://github.com/M-Abdu1a" target="_blank" rel="noopener" aria-label="GitHub for SQL Data Analyst Portfolio Project"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.2 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.02c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.23-1.28-5.23-5.68 0-1.25.45-2.28 1.18-3.08.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.16 1.18a10.9 10.9 0 0 1 5.75 0c2.19-1.49 3.15-1.18 3.15-1.18.63 1.58.24 2.75.12 3.04.74.8 1.18 1.83 1.18 3.08 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.13v3.15c0 .31.21.68.8.56A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg></a>
         </div>
       </div>
-    </div>
-    <div class="fade-in">
-      <div class="section-eyebrow">About Me</div>
-      <h2 class="section-heading">Hi, I'm <span class="hi">Abdullah</span> —<br>a student who learns by building</h2>
-      <p class="section-sub">I'm a third-year university student based in Dubai, UAE. Rather than waiting until graduation, I've been building real projects to teach myself the tools that actually matter — SQL, Python, Power BI, and more. This portfolio is a record of that journey so far.</p>
-      <ul class="check-list">
-        <li>Built 10+ projects spanning retail, finance, and e-commerce datasets</li>
-        <li>Self-taught in Power BI, DAX, and Databricks alongside my degree</li>
-        <li>Focused on practical, stakeholder-ready outputs — not just notebooks</li>
-        <li>Experimenting with Microsoft Fabric and Python web apps</li>
-      </ul>
-    </div>
+    </article>
+
   </div>
 </section>
 
-<div class="divider"></div>
 
 
 
@@ -706,7 +722,7 @@
 <section class="section">
   <div class="fade-in">
     <div class="section-eyebrow">Toolkit</div>
-    <h2 class="section-heading">Technologies I've been learning</h2>
+    <h2 class="section-heading">Tech Stack</h2>
   </div>
   <div class="stack-pills">
     <div class="stack-pill fade-in">
@@ -751,22 +767,17 @@
   <div class="contact-card fade-in">
     <p>Always happy to chat about data, projects, or anything analytics. Feel free to reach out.</p>
     <div class="contact-links">
-      <a href="mailto:ab@example.com" class="contact-link">✉️ ab@example.com</a>
-      <a href="https://linkedin.com/in/ab" target="_blank" class="contact-link">🔗 linkedin.com/in/ab</a>
-      <a href="https://github.com/ab" target="_blank" class="contact-link">💾 github.com/ab</a>
-    </div>
-    <div class="resume-row">
-      <p>Want a summary of my skills and projects?</p>
-      <a href="./resume.pdf" target="_blank" rel="noopener" class="btn-dl">📄 Open My Resume</a>
+      <a href="mailto:maharoon2005@gmail.com" class="contact-link" aria-label="Email maharoon2005@gmail.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 5.5h19v13h-19v-13Zm1.8 1.5 7.7 5.3 7.7-5.3H4.3Zm15.7 10V8.8l-7.1 4.9a1.5 1.5 0 0 1-1.7 0L4 8.8V17h16Z"/></svg><span>Email · maharoon2005@gmail.com</span></a>
+      <a href="https://www.linkedin.com/in/muhammad-abdullaharoon/" target="_blank" rel="noopener" class="contact-link" aria-label="LinkedIn profile"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="3"/><path fill="var(--card-bg)" d="M7 9.2H4.8V18H7V9.2ZM5.9 8.1c.7 0 1.2-.5 1.2-1.2S6.6 5.7 5.9 5.7s-1.2.5-1.2 1.2.5 1.2 1.2 1.2ZM18.5 12.9c0-2.6-1.4-3.9-3.4-3.9-1.6 0-2.3.9-2.7 1.5V9.2h-2.2V18h2.2v-4.4c0-1.2.2-2.4 1.7-2.4 1.5 0 1.5 1.4 1.5 2.5V18h2.2l.7-5.1Z"/></svg><span>LinkedIn · muhammad-abdullaharoon</span></a>
+      <a href="https://github.com/M-Abdu1a" target="_blank" rel="noopener" class="contact-link" aria-label="GitHub profile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.2 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.02c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.23-1.28-5.23-5.68 0-1.25.45-2.28 1.18-3.08-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.16 1.18a10.9 10.9 0 0 1 5.75 0c2.19-1.49 3.15-1.18 3.15-1.18.63 1.58.24 2.75.12 3.04.74.8 1.18 1.83 1.18 3.08 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.13v3.15c0 .31.21.68.8.56A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg><span>GitHub · M-Abdu1a</span></a>
     </div>
   </div>
 </section>
 
 <footer>
-  <p>© 2026 Ab · Data Student · Dubai, UAE</p>
+  <p>© 2026 Ab · Data Projects</p>
   <div class="footer-links">
     <a href="#projects">Projects</a>
-    <a href="#about">About</a>
     <a href="#contact">Contact</a>
   </div>
 </footer>
@@ -778,7 +789,7 @@
 <!-- MODAL: Power BI Retail Dashboard -->
 <div class="modal-overlay" id="modal-pbi-retail">
   <div class="modal">
-    <div class="modal-hero" style="background:linear-gradient(135deg,#E8DAB2,#D9BF77)">
+    <div class="modal-hero" style="background:linear-gradient(135deg,#E8DAB2,#E8D48A)">
       <button class="modal-close" onclick="closeModal('pbi-retail')">✕</button>
       <svg width="64" height="64" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#F2C811"/><rect x="8" y="18" width="4" height="8" rx="1" fill="#333"/><rect x="14" y="12" width="4" height="14" rx="1" fill="#333"/><rect x="20" y="6" width="4" height="20" rx="1" fill="#333"/></svg>
     </div>
@@ -917,7 +928,7 @@
 <!-- MODAL: Databricks Pipeline -->
 <div class="modal-overlay" id="modal-databricks-pipeline">
   <div class="modal">
-    <div class="modal-hero" style="background:linear-gradient(135deg,#E8DAB2,#D9BF77)">
+    <div class="modal-hero" style="background:linear-gradient(135deg,#E8DAB2,#E8D48A)">
       <button class="modal-close" onclick="closeModal('databricks-pipeline')">✕</button>
       <svg width="64" height="64" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#FF3621"/><text x="4" y="22" font-size="10" font-weight="bold" fill="white" font-family="sans-serif">DBX</text></svg>
     </div>
@@ -997,6 +1008,37 @@
 </div>
 
 <script>
+  // Replace placeholder marks with brand assets from Simple Icons.
+  const technologyLogos = [
+    { match: 'power bi', slug: 'powerbi' },
+    { match: 'tableau', slug: 'tableau' },
+    { match: 'pyspark', slug: 'apachespark' },
+    { match: 'python', slug: 'python' },
+    { match: 'pandas', slug: 'pandas' },
+    { match: 'excel', slug: 'microsoftoffice' },
+    { match: 'sql', slug: 'microsoftsqlserver' }
+  ];
+
+  const excludedTechnologies = ['javascript', 'vanilla js', 'databricks', 'sqlite', 'microsoft fabric'];
+  document.querySelectorAll('.project-tag, .tool-logo, .stack-pill').forEach(element => {
+    const label = element.textContent.trim().toLowerCase();
+    if (label === 'js' || excludedTechnologies.some(technology => label.includes(technology))) element.remove();
+  });
+
+  document.querySelectorAll('.tool-logo, .stack-pill').forEach(element => {
+    const label = element.textContent.trim().toLowerCase();
+    const technology = technologyLogos.find(item => label.includes(item.match));
+    if (!technology) return;
+    const image = document.createElement('img');
+    image.className = 'brand-logo';
+    image.src = `https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/${technology.slug}.svg`;
+    image.alt = `${technology.match} logo`;
+    image.loading = 'lazy';
+    image.decoding = 'async';
+    element.querySelector('svg')?.remove();
+    element.insertBefore(image, element.firstChild);
+  });
+
   // PROJECT CARD TILT
   document.querySelectorAll('.project-card').forEach(card => {
     card.addEventListener('mousemove', (e) => {

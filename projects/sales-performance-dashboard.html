@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Sales Performance Dashboard | Ab Portfolio</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="project-style.css"></head>
+<body class="bg-zinc-950 text-white">
+<nav class="fixed inset-x-0 top-0 z-50 border-b border-zinc-800/80 bg-zinc-950/95 backdrop-blur-xl">
+  <div class="mx-auto flex max-w-7xl items-center justify-between gap-6 px-6 py-4">
+    <a href="../index.html" class="nav-logo">Ab<span>.</span></a>
+    <div class="flex items-center gap-4 text-sm font-semibold text-zinc-400">
+      <a href="../index.html#projects" class="hover:text-white">Projects</a>
+      <a href="../index.html#about" class="hover:text-white">About</a>
+      <a href="../index.html#skills" class="hover:text-white">Skills</a>
+      <a href="../index.html#contact" class="hover:text-white">Contact</a>
+    </div>
+  </div>
+</nav>
+<header class="page-hero pt-28 pb-14">
+  <div class="hero-inner mx-auto max-w-6xl px-6">
+    <div class="eyebrow">Tableau · Sales Analytics</div>
+    <h1 class="mt-4 text-4xl font-extrabold tracking-tight text-white sm:text-5xl">Sales Performance Dashboard</h1>
+    <p class="mt-6 max-w-3xl text-lg leading-8 text-zinc-400">A Tableau dashboard built from the Superstore dataset, designed to compare regional sales, category performance, YoY growth, and profit behavior.</p>
+    <div class="mt-8 flex flex-wrap items-center gap-4">
+      <a class="btn primary" href="../index.html#projects">Back to projects</a>
+      <a class="btn" href="https://github.com/M-Abdu1a" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</header>
+<main class="content mx-auto max-w-6xl px-6 pb-16 space-y-10">
+  <section class="grid grid-cols-1 gap-4 md:grid-cols-3">
+    <div class="meta-card bg-zinc-900/70 border border-zinc-800 backdrop-blur-xl p-6 shadow-lg shadow-purple-500/5">
+      <div class="meta-label">Tools / Tech Stack</div>
+      <p class="mt-3 text-white">Tableau · SQL</p>
+    </div>
+    <div class="meta-card bg-zinc-900/70 border border-zinc-800 backdrop-blur-xl p-6 shadow-lg shadow-cyan-400/5">
+      <div class="meta-label">Focus / Architecture</div>
+      <p class="mt-3 text-white">Sales and profitability reporting with interactive filters and dashboard actions.</p>
+    </div>
+    <div class="meta-card bg-zinc-900/70 border border-zinc-800 backdrop-blur-xl p-6 shadow-lg shadow-violet-500/5">
+      <div class="meta-label">Output / Impact</div>
+      <p class="mt-3 text-white">Interactive Tableau dashboard for regional, category, and profit analysis.</p>
+    </div>
+  </section>
+  <section class="media-showcase rounded-[28px] border border-zinc-800/75 bg-zinc-900/60 p-6 shadow-2xl shadow-black/20 backdrop-blur-xl min-h-[420px]">
+    <div class="flex h-full flex-col justify-between gap-6">
+      <div class="flex items-center justify-between gap-4 text-xs uppercase tracking-[0.24em] text-zinc-400">
+        <span class="text-cyan-300/75">Visual Design</span>
+        <span class="text-violet-300/75">Dashboard Flow</span>
+      </div>
+      <div class="grid flex-1 gap-4 rounded-3xl border border-purple-500/20 bg-zinc-950/70 p-8 text-zinc-500 flex flex-col justify-center items-center text-center">
+        <div class="text-lg font-semibold text-white">Sales Dashboard Showcase</div>
+        <p class="mt-3 max-w-xl text-sm leading-6">A polished showcase area for the report's executive layout, filter interactions, and cross-chart navigation.</p>
+      </div>
+      <div class="text-sm text-zinc-400">Clean, spacious media frame for your dashboard or architecture snapshot.</div>
+    </div>
+  </section>
+  <section class="grid grid-cols-1 gap-8 lg:grid-cols-12">
+    <div class="lg:col-span-7 space-y-6">
+      <h2 class="section-title">Process</h2>
+      <div class="steps space-y-6">
+        <div class="step gap-5 rounded-3xl border border-zinc-800/85 bg-zinc-900/70 p-6 shadow-lg shadow-black/10">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <div class="step-label">Connect</div>
+            <div class="step-title">Exploring the Superstore data model</div>
+            <p class="step-body">Connected Tableau Desktop to the Sample Superstore workbook and reviewed the Orders, Returns, and People tables before creating the relationship structure.</p>
+          </div>
+        </div>
+        <div class="step gap-5 rounded-3xl border border-zinc-800/85 bg-zinc-900/70 p-6 shadow-lg shadow-black/10">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <div class="step-label">Calculated Fields</div>
+            <div class="step-title">Creating YoY, profit ratio, and running total metrics</div>
+            <p class="step-body">Built Tableau calculations for YoY growth, Profit Ratio, and Running Total, then tested how each field behaved with different dimensions and date levels.</p>
+          </div>
+        </div>
+        <div class="step gap-5 rounded-3xl border border-zinc-800/85 bg-zinc-900/70 p-6 shadow-lg shadow-black/10">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <div class="step-label">Sheets</div>
+            <div class="step-title">Building charts before assembling the dashboard</div>
+            <p class="step-body">Created KPI bars, a regional map, category breakdowns, monthly trends, customer tables, and a profit versus discount scatter plot.</p>
+          </div>
+        </div>
+        <div class="step gap-5 rounded-3xl border border-zinc-800/85 bg-zinc-900/70 p-6 shadow-lg shadow-black/10">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <div class="step-label">Dashboard</div>
+            <div class="step-title">Adding filters and actions</div>
+            <p class="step-body">Added segment and year filters, then set up dashboard actions so clicking a region filters the supporting charts.</p>
+          </div>
+        </div>
+        <div class="step gap-5 rounded-3xl border border-zinc-800/85 bg-zinc-900/70 p-6 shadow-lg shadow-black/10">
+          <div class="step-num">5</div>
+          <div class="step-content">
+            <div class="step-label">Publish</div>
+            <div class="step-title">Testing Tableau Public behavior</div>
+            <p class="step-body">Published to Tableau Public and checked browser behavior, including initial map rendering and filter responsiveness.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <aside class="lg:col-span-5">
+      <div class="space-y-6 sticky top-8">
+        <div class="meta-card bg-zinc-900/70 border border-zinc-800 backdrop-blur-xl p-6 shadow-lg shadow-black/10">
+          <div class="meta-label">Technical Artifacts</div>
+          <div class="mt-4 space-y-4 text-sm text-zinc-300">
+            <div class="rounded-3xl border border-zinc-800 bg-zinc-950/80 p-4">
+              <div class="text-xs uppercase tracking-[0.22em] text-zinc-400">Tableau calc</div>
+              <pre class="mt-3 overflow-x-auto text-[0.85rem] leading-6 text-cyan-200">IF [Year] = YEAR(TODAY()) THEN [Sales] END</pre>
+            </div>
+            <div class="rounded-3xl border border-zinc-800 bg-zinc-950/80 p-4">
+              <div class="text-xs uppercase tracking-[0.22em] text-zinc-400">SQL snippet</div>
+              <pre class="mt-3 overflow-x-auto text-[0.85rem] leading-6 text-purple-200">SELECT Region, SUM(Sales) AS TotalSales
+FROM Sales
+GROUP BY Region;</pre>
+            </div>
+          </div>
+        </div>
+        <div class="meta-card bg-zinc-900/70 border border-zinc-800 backdrop-blur-xl p-6 shadow-lg shadow-black/10">
+          <div class="meta-label">What I learned</div>
+          <p class="mt-3 text-zinc-300">Table calculations are powerful but require careful attention to "compute using." Building sheets before dashboard assembly made the work much faster.</p>
+        </div>
+      </div>
+    </aside>
+  </section>
+</main>
+<footer class="border-t border-zinc-800/80 bg-zinc-950/90 px-6 py-6 text-sm text-zinc-500 backdrop-blur-xl">
+  <div class="mx-auto flex max-w-6xl flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+    <p>&copy; 2026 Ab</p>
+    <a href="../index.html#projects" class="hover:text-white">Back to portfolio</a>
+  </div>
+</footer>
+</body></html>

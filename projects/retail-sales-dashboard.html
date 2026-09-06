@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Retail Sales Dashboard | Ab Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="project-style.css">
+</head>
+<body class="bg-zinc-950 text-white">
+<nav class="fixed inset-x-0 top-0 z-50 border-b border-zinc-800/80 bg-zinc-950/95 backdrop-blur-xl">
+  <div class="mx-auto flex max-w-7xl items-center justify-between gap-6 px-6 py-4">
+    <a href="../index.html" class="nav-logo">Ab<span>.</span></a>
+    <div class="flex items-center gap-4 text-sm font-semibold text-zinc-400">
+      <a href="../index.html#projects" class="hover:text-white">Projects</a>
+      <a href="../index.html#about" class="hover:text-white">About</a>
+      <a href="../index.html#skills" class="hover:text-white">Skills</a>
+      <a href="../index.html#contact" class="hover:text-white">Contact</a>
+    </div>
+  </div>
+</nav>
+<header class="page-hero pt-28 pb-14">
+  <div class="hero-inner mx-auto max-w-6xl px-6">
+    <div class="eyebrow">Power BI · Retail Analytics</div>
+    <h1 class="mt-4 text-4xl font-extrabold tracking-tight text-white sm:text-5xl">Retail Sales Dashboard</h1>
+    <p class="mt-6 max-w-3xl text-lg leading-8 text-zinc-400">An end-to-end Power BI dashboard that turns raw sales data into executive KPIs, regional performance views, product analysis, and drill-through pages.</p>
+    <div class="mt-8 flex flex-wrap items-center gap-4">
+      <a class="btn primary" href="../index.html#projects">Back to projects</a>
+      <a class="btn" href="https://github.com/M-Abdu1a" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</header>
+<main class="content mx-auto max-w-6xl px-6 pb-16 space-y-10">
+  <section class="grid grid-cols-1 gap-4 md:grid-cols-3">
+    <div class="meta-card bg-zinc-900/70 border border-zinc-800 backdrop-blur-xl p-6 shadow-lg shadow-purple-500/5">
+      <div class="meta-label">Tools / Tech Stack</div>
+      <p class="mt-3 text-white">Power BI · SQL · Excel</p>
+    </div>
+    <div class="meta-card bg-zinc-900/70 border border-zinc-800 backdrop-blur-xl p-6 shadow-lg shadow-cyan-400/5">
+      <div class="meta-label">Focus / Architecture</div>
+      <p class="mt-3 text-white">Executive reporting, DAX KPIs, and drill-through customer analyses.</p>
+    </div>
+    <div class="meta-card bg-zinc-900/70 border border-zinc-800 backdrop-blur-xl p-6 shadow-lg shadow-violet-500/5">
+      <div class="meta-label">Output / Impact</div>
+      <p class="mt-3 text-white">Three-page interactive dashboard for retail sales planning.</p>
+    </div>
+  </section>
+  <section class="media-showcase rounded-[28px] border border-zinc-800/75 bg-zinc-900/60 p-6 shadow-2xl shadow-black/20 backdrop-blur-xl min-h-[420px]">
+    <div class="flex h-full flex-col justify-between gap-6">
+      <div class="flex items-center justify-between gap-4 text-xs uppercase tracking-[0.24em] text-zinc-400">
+        <span class="text-cyan-300/75">Power BI Flow</span>
+        <span class="text-violet-300/75">Executive Metrics</span>
+      </div>
+      <div class="grid flex-1 gap-4 rounded-3xl border border-purple-500/20 bg-zinc-950/70 p-8 text-zinc-500 flex flex-col justify-center items-center text-center">
+        <div class="text-lg font-semibold text-white">Retail Analytics Showcase</div>
+        <p class="mt-3 max-w-xl text-sm leading-6">A subtle media panel for the report's layout, KPI groupings, and action-oriented dashboard design.</p>
+      </div>
+      <div class="text-sm text-zinc-400">Perfect for a screenshot or schematic of the report layout and data flow.</div>
+    </div>
+  </section>
+  <section class="grid grid-cols-1 gap-8 lg:grid-cols-12">
+    <div class="lg:col-span-7 space-y-6">
+      <h2 class="section-title">Process</h2>
+      <div class="steps space-y-6">
+        <div class="step gap-5 rounded-3xl border border-zinc-800/85 bg-zinc-900/70 p-6 shadow-lg shadow-black/10">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <div class="step-label">Requirement Gathering</div>
+            <div class="step-title">Blank file to business questions</div>
+            <p class="step-body">Started with a blank .pbix file and a list of business questions: which products drive revenue, which regions are underperforming, and what YoY growth looks like. Writing the questions first shaped the report design.</p>
+          </div>
+        </div>
+        <div class="step gap-5 rounded-3xl border border-zinc-800/85 bg-zinc-900/70 p-6 shadow-lg shadow-black/10">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <div class="step-label">Power Query</div>
+            <div class="step-title">Cleaning the sales source</div>
+            <p class="step-body">Imported the raw Excel sales flat table, removed blank rows, fixed date formats, split a combined Region-Country column, renamed fields, and created a Date dimension for time intelligence.</p>
+          </div>
+        </div>
+        <div class="step gap-5 rounded-3xl border border-zinc-800/85 bg-zinc-900/70 p-6 shadow-lg shadow-black/10">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <div class="step-label">Data Model</div>
+            <div class="step-title">Building the star schema</div>
+            <p class="step-body">Connected the fact sales table to Date, Product, Region, and Customer dimensions with one-to-many relationships and checked filter direction so DAX measures behaved correctly.</p>
+          </div>
+        </div>
+        <div class="step gap-5 rounded-3xl border border-zinc-800/85 bg-zinc-900/70 p-6 shadow-lg shadow-black/10">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <div class="step-label">DAX</div>
+            <div class="step-title">Writing KPI measures</div>
+            <p class="step-body">Created measures for Total Sales, Gross Margin %, YoY Growth, Running Total, and Top 10 Products. Each measure was tested in a table visual before being placed on the report canvas.</p>
+          </div>
+        </div>
+        <div class="step gap-5 rounded-3xl border border-zinc-800/85 bg-zinc-900/70 p-6 shadow-lg shadow-black/10">
+          <div class="step-num">5</div>
+          <div class="step-content">
+            <div class="step-label">Report Design</div>
+            <div class="step-title">Executive, product, and drill-through pages</div>
+            <p class="step-body">Designed an Executive Summary, Product Analysis page, and Drill-Through page. The dark theme keeps the report consistent with the portfolio while giving positive and negative values clear contrast.</p>
+          </div>
+        </div>
+        <div class="step gap-5 rounded-3xl border border-zinc-800/85 bg-zinc-900/70 p-6 shadow-lg shadow-black/10">
+          <div class="step-num">6</div>
+          <div class="step-content">
+            <div class="step-label">Testing</div>
+            <div class="step-title">Checking filters and publish behavior</div>
+            <p class="step-body">Ran slicer combinations, checked for blanks, fixed one cross-filter issue, and prepared the dashboard for publishing.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <aside class="lg:col-span-5">
+      <div class="space-y-6 sticky top-8">
+        <div class="meta-card bg-zinc-900/70 border border-zinc-800 backdrop-blur-xl p-6 shadow-lg shadow-black/10">
+          <div class="meta-label">Technical Artifacts</div>
+          <div class="mt-4 space-y-4 text-sm text-zinc-300">
+            <div class="rounded-3xl border border-zinc-800 bg-zinc-950/80 p-4">
+              <div class="text-xs uppercase tracking-[0.22em] text-zinc-400">DAX measure</div>
+              <pre class="mt-3 overflow-x-auto text-[0.85rem] leading-6 text-cyan-200">Total Sales = SUM('Sales'[SalesAmount])</pre>
+            </div>
+            <div class="rounded-3xl border border-zinc-800 bg-zinc-950/80 p-4">
+              <div class="text-xs uppercase tracking-[0.22em] text-zinc-400">SQL snippet</div>
+              <pre class="mt-3 overflow-x-auto text-[0.85rem] leading-6 text-purple-200">SELECT Region, SUM(Sales) AS TotalSales
+FROM Sales
+GROUP BY Region;</pre>
+            </div>
+          </div>
+        </div>
+        <div class="meta-card bg-zinc-900/70 border border-zinc-800 backdrop-blur-xl p-6 shadow-lg shadow-black/10">
+          <div class="meta-label">What I learned</div>
+          <p class="mt-3 text-zinc-300">Proper star schema setup makes DAX dramatically easier. The biggest time sink was Power Query and model preparation, not the visuals.</p>
+        </div>
+      </div>
+    </aside>
+  </section>
+</main>
+<footer class="border-t border-zinc-800/80 bg-zinc-950/90 px-6 py-6 text-sm text-zinc-500 backdrop-blur-xl">
+  <div class="mx-auto flex max-w-6xl flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+    <p>&copy; 2026 Ab</p>
+    <a href="../index.html#projects" class="hover:text-white">Back to portfolio</a>
+  </div>
+</footer>
+</body>
+</html>

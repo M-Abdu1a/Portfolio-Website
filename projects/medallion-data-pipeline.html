@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Medallion Data Pipeline | Ab Portfolio</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script><link rel="stylesheet" href="project-style.css"></head>
+<body class="bg-zinc-950 text-white">
+<nav class="fixed inset-x-0 top-0 z-50 border-b border-zinc-800/80 bg-zinc-950/95 backdrop-blur-xl">
+  <div class="mx-auto flex max-w-7xl items-center justify-between gap-6 px-6 py-4">
+    <a href="../index.html" class="nav-logo">Ab<span>.</span></a>
+    <div class="flex items-center gap-4 text-sm font-semibold text-zinc-400">
+      <a href="../index.html#projects" class="hover:text-white">Projects</a>
+      <a href="../index.html#about" class="hover:text-white">About</a>
+      <a href="../index.html#skills" class="hover:text-white">Skills</a>
+      <a href="../index.html#contact" class="hover:text-white">Contact</a>
+    </div>
+  </div>
+</nav>
+<header class="page-hero pt-28 pb-14">
+  <div class="hero-inner mx-auto max-w-6xl px-6">
+    <div class="eyebrow">Databricks · Data Engineering</div>
+    <h1 class="mt-4 text-4xl font-extrabold tracking-tight text-white sm:text-5xl">Medallion Data Pipeline</h1>
+    <p class="mt-6 max-w-3xl text-lg leading-8 text-zinc-400">A lakehouse-style project that moves sales data through Bronze, Silver, and Gold layers before feeding a Power BI report.</p>
+    <div class="mt-8 flex flex-wrap items-center gap-4">
+      <a class="btn primary" href="../index.html#projects">Back to projects</a>
+      <a class="btn" href="https://github.com/M-Abdu1a" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</header>
+<main class="content mx-auto max-w-6xl px-6 pb-16 space-y-10">
+  <section class="grid grid-cols-1 gap-4 md:grid-cols-3">
+    <div class="meta-card bg-zinc-900/70 border border-zinc-800 backdrop-blur-xl p-6 shadow-lg shadow-purple-500/5">
+      <div class="meta-label">Tools / Tech Stack</div>
+      <p class="mt-3 text-white">Databricks · PySpark · Power BI</p>
+    </div>
+    <div class="meta-card bg-zinc-900/70 border border-zinc-800 backdrop-blur-xl p-6 shadow-lg shadow-cyan-400/5">
+      <div class="meta-label">Focus / Architecture</div>
+      <p class="mt-3 text-white">Lakehouse architecture with traceable Bronze, Silver, and Gold layers.</p>
+    </div>
+    <div class="meta-card bg-zinc-900/70 border border-zinc-800 backdrop-blur-xl p-6 shadow-lg shadow-violet-500/5">
+      <div class="meta-label">Output / Impact</div>
+      <p class="mt-3 text-white">Bronze/Silver/Gold tables powering analytics-ready reporting.</p>
+    </div>
+  </section>
+  <section class="media-showcase rounded-[28px] border border-zinc-800/75 bg-zinc-900/60 p-6 shadow-2xl shadow-black/20 backdrop-blur-xl min-h-[420px]">
+    <div class="flex h-full flex-col justify-between gap-6">
+      <div class="flex items-center justify-between gap-4 text-xs uppercase tracking-[0.24em] text-zinc-400">
+        <span class="text-cyan-300/75">Lakehouse Flow</span>
+        <span class="text-violet-300/75">Data Lineage</span>
+      </div>
+      <div class="grid flex-1 gap-4 rounded-3xl border border-purple-500/20 bg-zinc-950/70 p-8 text-zinc-500 flex flex-col justify-center items-center text-center">
+        <div class="text-lg font-semibold text-white">Pipeline Showcase</div>
+        <p class="mt-3 max-w-xl text-sm leading-6">A visual frame for the medallion pipeline, from raw ingest to business-ready analytics tables.</p>
+      </div>
+      <div class="text-sm text-zinc-400">A polished space for architectural diagrams or pipeline screenshots.</div>
+    </div>
+  </section>
+  <section class="grid grid-cols-1 gap-8 lg:grid-cols-12">
+    <div class="lg:col-span-7 space-y-6">
+      <h2 class="section-title">Process</h2>
+      <div class="steps space-y-6">
+        <div class="step gap-5 rounded-3xl border border-zinc-800/85 bg-zinc-900/70 p-6 shadow-lg shadow-black/10">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <div class="step-label">Architecture</div>
+            <div class="step-title">Planning Bronze, Silver, and Gold layers</div>
+            <p class="step-body">Mapped raw, cleaned, and business-ready data layers before writing code so each table had a clear responsibility.</p>
+          </div>
+        </div>
+        <div class="step gap-5 rounded-3xl border border-zinc-800/85 bg-zinc-900/70 p-6 shadow-lg shadow-black/10">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <div class="step-label">Bronze</div>
+            <div class="step-title">Landing raw CSV files</div>
+            <p class="step-body">Used Databricks ingestion patterns to land raw CSV files in Delta format and added source metadata for traceability.</p>
+          </div>
+        </div>
+        <div class="step gap-5 rounded-3xl border border-zinc-800/85 bg-zinc-900/70 p-6 shadow-lg shadow-black/10">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <div class="step-label">Silver</div>
+            <div class="step-title">Cleaning and typing with PySpark</div>
+            <p class="step-body">Casted dates, stripped whitespace, filtered invalid quantities, and deduplicated records using order and product identifiers.</p>
+          </div>
+        </div>
+        <div class="step gap-5 rounded-3xl border border-zinc-800/85 bg-zinc-900/70 p-6 shadow-lg shadow-black/10">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <div class="step-label">Gold</div>
+            <div class="step-title">Creating business metrics</div>
+            <p class="step-body">Built aggregated tables for daily sales by region and product performance using PySpark SQL and window functions.</p>
+          </div>
+        </div>
+        <div class="step gap-5 rounded-3xl border border-zinc-800/85 bg-zinc-900/70 p-6 shadow-lg shadow-black/10">
+          <div class="step-num">5</div>
+          <div class="step-content">
+            <div class="step-label">Power BI</div>
+            <div class="step-title">Connecting the reporting layer</div>
+            <p class="step-body">Connected Power BI to the Gold layer, built a simple star schema, and created measures on top of the curated tables.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <aside class="lg:col-span-5">
+      <div class="space-y-6 sticky top-8">
+        <div class="meta-card bg-zinc-900/70 border border-zinc-800 backdrop-blur-xl p-6 shadow-lg shadow-black/10">
+          <div class="meta-label">Technical Artifacts</div>
+          <div class="mt-4 space-y-4 text-sm text-zinc-300">
+            <div class="rounded-3xl border border-zinc-800 bg-zinc-950/80 p-4">
+              <div class="text-xs uppercase tracking-[0.22em] text-zinc-400">PySpark write</div>
+              <pre class="mt-3 overflow-x-auto text-[0.85rem] leading-6 text-cyan-200">bronze_df.write.format("delta").mode("overwrite").save(bronze_path)</pre>
+            </div>
+            <div class="rounded-3xl border border-zinc-800 bg-zinc-950/80 p-4">
+              <div class="text-xs uppercase tracking-[0.22em] text-zinc-400">Pipeline note</div>
+              <pre class="mt-3 overflow-x-auto text-[0.85rem] leading-6 text-purple-200">{ "layer": "gold", "status": "ready", "updated_at": "2026-07-28T12:34:00Z" }</pre>
+            </div>
+          </div>
+        </div>
+        <div class="meta-card bg-zinc-900/70 border border-zinc-800 backdrop-blur-xl p-6 shadow-lg shadow-black/10">
+          <div class="meta-label">What I learned</div>
+          <p class="mt-3 text-zinc-300">The medallion structure makes debugging easier because every Gold metric can be traced back through cleaned and raw layers.</p>
+        </div>
+      </div>
+    </aside>
+  </section>
+</main>
+<footer class="border-t border-zinc-800/80 bg-zinc-950/90 px-6 py-6 text-sm text-zinc-500 backdrop-blur-xl">
+  <div class="mx-auto flex max-w-6xl flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+    <p>&copy; 2026 Ab</p>
+    <a href="../index.html#projects" class="hover:text-white">Back to portfolio</a>
+  </div>
+</footer>
+</body></html>

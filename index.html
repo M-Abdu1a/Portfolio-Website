@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ab — Data Student & BI Enthusiast</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  @font-face {
+    font-family:'Waltograph';
+    src:local('Waltograph'), url('wds011402.ttf') format('truetype');
+    font-display:swap;
+  }
+  :root {
+    --bg:#fbf4df; --bg2:#efe4cc; --bg3:#e4d5bf;
+    --purple:#A45A3D; --purple-lt:#B9775F; --purple-dim:#E8DAB2;
+    --accent:#A45A3D; --yellow:#D9BF77; --white:#3F2818;
+    --muted:#745D49; --card-bg:#fffaf0; --border:rgba(107,66,38,0.16); --radius:12px;
+  }
+  html { scroll-behavior: smooth; }
+  body { background:var(--bg); color:var(--white); font-family:'Inter',sans-serif; font-size:16px; line-height:1.6; overflow-x:hidden; }
+
+  /* NAV */
+  nav { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; align-items:center; justify-content:space-between; padding:0 5%; height:64px; background:rgba(251,244,223,0.92); backdrop-filter:blur(12px); border-bottom:1px solid var(--border); box-shadow:0 10px 30px rgba(107,66,38,0.08); }
+  .nav-logo { font-family:'Waltograph','Inter',cursive; font-size:2rem; font-weight:400; color:var(--white); text-decoration:none; letter-spacing:0; line-height:1; }
+  .nav-logo span { color:var(--accent); }
+  .nav-links { display:flex; gap:2rem; list-style:none; }
+  .nav-links a { color:var(--muted); text-decoration:none; font-size:0.9rem; font-weight:500; transition:color .2s; }
+  .nav-links a:hover { color:var(--white); }
+  .nav-right { display:flex; gap:.75rem; align-items:center; }
+  .nav-resume { background:transparent; color:var(--accent); border:1.5px solid var(--accent); border-radius:8px; padding:.45rem 1.1rem; font-size:.85rem; font-weight:600; cursor:pointer; text-decoration:none; transition:background .2s,color .2s; }
+  .nav-resume:hover { background:var(--accent); color:#fff; }
+  .nav-cta { background:var(--purple); color:#fff; border:none; border-radius:8px; padding:.5rem 1.25rem; font-size:.875rem; font-weight:600; cursor:pointer; text-decoration:none; transition:background .2s; }
+  .nav-cta:hover { background:var(--purple-lt); }
+
+  /* HERO */
+  .hero { min-height:auto; display:flex; flex-direction:column; justify-content:center; padding:128px 0 72px; position:relative; overflow:hidden; background:linear-gradient(180deg,#E8DAB2 0%,var(--bg) 100%); }
+  .hero > * { margin-left:5%; margin-right:5%; max-width:740px; }
+  .hero-eyebrow { display:inline-flex; align-items:center; gap:.5rem; color:var(--accent); font-size:.8rem; font-weight:600; letter-spacing:.1em; text-transform:uppercase; margin-bottom:1.25rem; }
+  .hero-eyebrow::before { content:''; width:2rem; height:2px; background:var(--accent); }
+  .hero h1 { font-family:'Inter',sans-serif; font-size:clamp(2.6rem,6vw,5rem); font-weight:800; line-height:1.05; letter-spacing:0; max-width:780px; margin-bottom:1.5rem; }
+  .hero h1 .underline { position:relative; color:var(--yellow); display:inline-block; }
+  .hero h1 .underline::after { content:''; position:absolute; left:0; bottom:-4px; width:100%; height:4px; background:var(--yellow); border-radius:2px; }
+  .hero p { color:var(--muted); font-size:1.05rem; max-width:520px; margin-bottom:2rem; line-height:1.75; }
+  .hero-btns { display:flex; gap:1rem; flex-wrap:wrap; align-items:center; }
+  .btn-primary { background:var(--purple); color:#fff; border:none; border-radius:8px; padding:.75rem 1.75rem; font-size:.95rem; font-weight:600; cursor:pointer; text-decoration:none; transition:background .2s,transform .15s; }
+  .btn-primary:hover { background:var(--purple-lt); transform:translateY(-1px); }
+  .btn-outline { background:transparent; color:var(--white); border:1.5px solid var(--border); border-radius:8px; padding:.75rem 1.75rem; font-size:.95rem; font-weight:600; cursor:pointer; text-decoration:none; transition:border-color .2s,color .2s; }
+  .btn-outline:hover { border-color:var(--accent); color:var(--accent); }
+  .btn-resume { display:inline-flex; align-items:center; gap:.5rem; background:transparent; color:var(--accent); border:1.5px solid var(--accent); border-radius:8px; padding:.75rem 1.5rem; font-size:.95rem; font-weight:600; cursor:pointer; text-decoration:none; transition:background .2s,color .2s; }
+  .btn-resume:hover { background:var(--accent); color:#fff; }
+  .hero-aside { margin-top:2.5rem; display:flex; align-items:flex-start; gap:.75rem; position:relative; z-index:1; }
+  .hero-aside .arrow { font-size:1.5rem; color:var(--accent); }
+  .hero-aside p { font-size:.82rem; color:var(--muted); margin:0; font-style:italic; line-height:1.5; }
+  .hero-aside p strong { color:var(--accent); font-style:normal; }
+
+  .hero h1, .hero p, .hero-eyebrow, .hero-btns, .hero-aside { position:relative; z-index:1; }
+
+  /* STATS */
+  .stats { background:var(--bg2); border-top:1px solid var(--border); border-bottom:1px solid var(--border); padding:2.25rem 5%; display:flex; gap:2rem; flex-wrap:wrap; justify-content:space-around; }
+  .stat { text-align:center; animation: stat-float 5s ease-in-out infinite alternate; }
+  .stat:nth-child(1) { animation-delay:0s; }
+  .stat:nth-child(2) { animation-delay:0.15s; }
+  .stat:nth-child(3) { animation-delay:0.3s; }
+  .stat:nth-child(4) { animation-delay:0.45s; }
+  .stat-num { font-family:'Inter',sans-serif; font-size:2rem; font-weight:800; color:var(--white); transition:transform .2s,color .3s; will-change:transform; }
+  .stat-num span { color:var(--purple-lt); }
+  .stat-label { font-size:.78rem; color:var(--muted); margin-top:.2rem; text-transform:uppercase; letter-spacing:.06em; }
+
+  @keyframes stat-float {
+    from { transform: translateY(0); }
+    to { transform: translateY(-10px); }
+  }
+
+  /* SECTIONS */
+  .section { padding:80px 5%; }
+  .section-eyebrow { font-size:.75rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); margin-bottom:.75rem; }
+  .section-heading { font-family:'Inter',sans-serif; font-size:clamp(1.75rem,3.5vw,2.75rem); font-weight:800; letter-spacing:0; line-height:1.15; margin-bottom:1rem; }
+  .section-heading .hi { color:var(--accent); }
+  .section-sub { color:var(--muted); font-size:1rem; max-width:560px; line-height:1.7; }
+  .divider { width:100%; height:1px; background:linear-gradient(90deg,transparent,var(--border),transparent); }
+
+  /* SKILLS GRID */
+  .skills-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:1.25rem; margin-top:3rem; }
+  .skill-card { background:var(--card-bg); border:1px solid var(--border); border-radius:var(--radius); padding:1.75rem 1.5rem; transition:border-color .2s,transform .2s; }
+  .skill-card:hover { border-color:var(--purple-lt); transform:translateY(-3px); }
+  .skill-icon { font-size:1.75rem; margin-bottom:1rem; }
+  .skill-card h3 { font-size:1rem; font-weight:700; margin-bottom:.5rem; }
+  .skill-card p { color:var(--muted); font-size:.85rem; line-height:1.6; }
+
+  /* ABOUT */
+  .about-split { display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center; }
+  @media(max-width:760px){ .about-split { grid-template-columns:1fr; gap:2rem; } }
+  .about-img-placeholder { width:100%; aspect-ratio:4/5; background:linear-gradient(135deg,var(--bg3) 0%,var(--purple-dim) 100%); border-radius:var(--radius); display:flex; align-items:center; justify-content:center; font-size:5rem; border:1px solid var(--border); }
+  .edu-card { margin-top:1rem; background:var(--card-bg); border:1px solid var(--border); border-radius:var(--radius); padding:1rem 1.25rem; display:flex; align-items:center; gap:.85rem; }
+  .edu-icon { font-size:1.6rem; flex-shrink:0; }
+  .edu-label { font-size:.7rem; color:var(--accent); font-weight:700; text-transform:uppercase; letter-spacing:.08em; }
+  .edu-name { font-size:.9rem; font-weight:700; margin:.1rem 0; }
+  .edu-sub { font-size:.78rem; color:var(--muted); }
+  .check-list { list-style:none; margin-top:1.5rem; display:flex; flex-direction:column; gap:.75rem; }
+  .check-list li { display:flex; gap:.75rem; align-items:flex-start; color:var(--muted); font-size:.95rem; }
+  .check-list li::before { content:'✓'; color:var(--accent); font-weight:800; flex-shrink:0; margin-top:.1rem; }
+
+  /* PROJECTS GRID */
+  .projects-header { display:flex; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; gap:1rem; margin-bottom:3rem; }
+  .projects-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
+  @media(max-width:900px){ .projects-grid { grid-template-columns:repeat(2,1fr); } }
+  @media(max-width:560px){ .projects-grid { grid-template-columns:1fr; } }
+
+  .project-card { background:var(--card-bg); border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; transition:border-color .25s,transform .08s ease-out,box-shadow .25s; will-change:transform; }
+  .project-card:hover { border-color:var(--purple-lt); box-shadow:0 16px 40px rgba(107,66,38,0.14); }
+
+  /* RIPPLE */
+  .btn-primary, .btn-outline, .nav-cta, .nav-resume, .btn-dl { position:relative; overflow:hidden; }
+  .ripple { position:absolute; border-radius:50%; background:rgba(255,255,255,0.5); transform:scale(0); animation:ripple-anim .6s ease-out; pointer-events:none; }
+  @keyframes ripple-anim { to { transform:scale(3); opacity:0; } }
+
+  /* STAT POP */
+  .stat-num { transition:transform .2s; }
+  .stat:hover .stat-num { transform:scale(1.08); }
+  .project-thumb { width:100%; aspect-ratio:16/10; display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; }
+  .project-card:nth-child(3n+1) .project-thumb { background:linear-gradient(135deg,#E8DAB2,#D9BF77); }
+  .project-card:nth-child(3n+2) .project-thumb { background:linear-gradient(135deg,#F6EED7,#C4B6A6); }
+  .project-card:nth-child(3n)   .project-thumb { background:linear-gradient(135deg,#E8DAB2,#D3B39A); }
+  .project-thumb-inner { width:85%; background:rgba(255,250,240,.68); border-radius:6px; border:1px solid rgba(107,66,38,.15); padding:.75rem; display:flex; flex-direction:column; gap:.35rem; }
+  .thumb-bar { height:6px; border-radius:3px; background:rgba(107,66,38,.15); }
+  .thumb-bar.a1 { background:var(--purple-lt); width:55%; }
+  .thumb-bar.a2 { background:var(--yellow); width:35%; }
+  .thumb-bar.a3 { background:#C4B6A6; width:45%; }
+  .thumb-row { display:flex; gap:.35rem; margin-top:.25rem; }
+  .thumb-box { height:28px; border-radius:4px; flex:1; background:rgba(107,66,38,.1); }
+  .thumb-box.f1 { background:rgba(164,90,61,.24); }
+  .thumb-box.f2 { background:rgba(217,191,119,.34); }
+  .project-tag { position:absolute; top:.75rem; left:.75rem; background:rgba(164,90,61,.86); color:#fff; font-size:.65rem; font-weight:700; text-transform:uppercase; letter-spacing:.07em; padding:.2rem .6rem; border-radius:999px; }
+  .project-domain { position:absolute; top:.75rem; right:.75rem; background:rgba(255,250,240,.78); color:var(--muted); font-size:.6rem; font-weight:600; text-transform:uppercase; letter-spacing:.06em; padding:.18rem .55rem; border-radius:999px; border:1px solid rgba(107,66,38,.14); }
+  .project-body { padding:1.1rem 1.25rem 1.4rem; }
+  .project-body h3 { font-size:.95rem; font-weight:700; margin-bottom:.4rem; line-height:1.35; }
+  .project-title-link { color:var(--white); text-decoration:none; }
+  .project-title-link:hover { color:var(--accent); }
+  .project-body p { font-size:.8rem; color:var(--muted); line-height:1.6; }
+  .project-tools { display:flex; gap:.4rem; flex-wrap:wrap; margin-top:.75rem; }
+  .project-actions { display:flex; align-items:center; justify-content:space-between; gap:.75rem; margin-top:1rem; }
+  .project-link { color:var(--purple-lt); text-decoration:none; font-size:.72rem; font-weight:700; letter-spacing:.03em; }
+  .project-link:hover { color:var(--white); }
+  .github-link { width:34px; height:34px; border:1px solid var(--border); border-radius:8px; display:inline-flex; align-items:center; justify-content:center; color:var(--white); background:var(--bg3); text-decoration:none; flex-shrink:0; transition:border-color .2s,color .2s,transform .15s; }
+  .github-link:hover { border-color:var(--accent); color:var(--accent); transform:translateY(-1px); }
+  .github-link svg { width:18px; height:18px; fill:currentColor; }
+
+  /* TOOL LOGOS */
+  .tool-logo { display:inline-flex; align-items:center; gap:.55rem; font-size:.8rem; font-weight:600; background:var(--bg3); color:var(--white); border:1px solid var(--border); border-radius:999px; padding:.35rem .75rem; }
+  .tool-logo svg { width:18px; height:18px; flex-shrink:0; }
+
+  /* STACK PILLS with logos */
+  .stack-pills { display:flex; flex-wrap:wrap; gap:1rem; margin-top:2rem; }
+  .stack-pill { background:var(--card-bg); border:1px solid var(--border); border-radius:var(--radius); padding:.85rem 1.2rem; display:flex; align-items:center; gap:.75rem; font-size:.95rem; font-weight:700; color:var(--white); transition:border-color .2s, transform .2s; }
+  .stack-pill:hover { transform:translateY(-2px); }
+  .stack-pill:hover { border-color:var(--accent); }
+  .stack-pill svg { width:20px; height:20px; flex-shrink:0; }
+
+  /* CONTACT */
+  .contact-section { background:var(--bg2); text-align:center; }
+  .contact-card { max-width:560px; margin:2.5rem auto 0; background:var(--card-bg); border:1px solid var(--border); border-radius:16px; padding:2.5rem; }
+  .contact-card > p { color:var(--muted); margin-bottom:1.75rem; font-size:.95rem; }
+  .contact-links { display:flex; flex-direction:column; gap:.75rem; align-items:center; }
+  .contact-link { display:flex; align-items:center; gap:.75rem; color:var(--muted); font-size:.9rem; text-decoration:none; transition:color .2s; }
+  .contact-link:hover { color:var(--accent); }
+  .resume-row { margin-top:1.5rem; padding-top:1.5rem; border-top:1px solid var(--border); }
+  .resume-row p { font-size:.8rem; color:var(--muted); margin-bottom:.85rem; }
+  .btn-dl { display:inline-flex; align-items:center; gap:.5rem; background:var(--purple); color:#fff; border:none; border-radius:8px; padding:.7rem 1.5rem; font-size:.9rem; font-weight:600; cursor:pointer; text-decoration:none; transition:background .2s; }
+  .btn-dl:hover { background:var(--purple-lt); }
+
+  /* FOOTER */
+  footer { background:var(--bg); border-top:1px solid var(--border); padding:2rem 5%; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem; }
+  footer p { color:var(--muted); font-size:.8rem; }
+  .footer-links { display:flex; gap:1.5rem; }
+  .footer-links a { color:var(--muted); font-size:.8rem; text-decoration:none; transition:color .2s; }
+  .footer-links a:hover { color:var(--accent); }
+
+  /* FADE IN */
+  .fade-in { opacity:0; transform:translateY(24px); transition:opacity .6s ease,transform .6s ease; }
+  .fade-in.visible { opacity:1; transform:translateY(0); }
+
+  /* ─────────────────────────────
+     MODAL / CASE STUDY
+  ───────────────────────────── */
+  .modal-overlay {
+    position:fixed; inset:0; z-index:999;
+    background:rgba(107,66,38,0.24);
+    backdrop-filter:blur(6px);
+    display:none; align-items:flex-start; justify-content:center;
+    padding:2rem 1rem;
+    overflow-y:auto;
+  }
+  .modal-overlay.open { display:flex; }
+
+  .modal {
+    background:var(--bg2);
+    border:1px solid var(--border);
+    border-radius:18px;
+    width:100%; max-width:780px;
+    margin:auto;
+    overflow:hidden;
+    animation:slideUp .3s ease;
+  }
+  @keyframes slideUp { from{opacity:0;transform:translateY(32px)} to{opacity:1;transform:translateY(0)} }
+
+  .modal-hero {
+    width:100%; height:200px;
+    display:flex; align-items:center; justify-content:center;
+    position:relative; font-size:4rem;
+  }
+  .modal-close {
+    position:absolute; top:1rem; right:1rem;
+    background:rgba(255,250,240,.82); border:1px solid rgba(107,66,38,.18);
+    color:var(--accent); border-radius:50%; width:36px; height:36px;
+    cursor:pointer; font-size:1.1rem; display:flex; align-items:center; justify-content:center;
+    transition:background .2s;
+  }
+  .modal-close:hover { background:var(--bg3); }
+
+  .modal-body { padding:2rem 2.5rem 2.5rem; }
+  .modal-tag { font-size:.7rem; font-weight:700; text-transform:uppercase; letter-spacing:.1em; color:var(--accent); margin-bottom:.5rem; }
+  .modal-title { font-family:'Inter',sans-serif; font-size:1.75rem; font-weight:800; letter-spacing:0; margin-bottom:.5rem; }
+  .modal-subtitle { color:var(--muted); font-size:.9rem; margin-bottom:1.5rem; line-height:1.65; }
+  .modal-tools { display:flex; flex-wrap:wrap; gap:.4rem; margin-bottom:2rem; padding-bottom:1.5rem; border-bottom:1px solid var(--border); }
+
+  /* STEPS — the Notion-style walkthrough */
+  .steps { display:flex; flex-direction:column; gap:0; }
+  .step { display:flex; gap:1.25rem; position:relative; }
+  .step:not(:last-child)::before {
+    content:''; position:absolute; left:15px; top:38px;
+    width:2px; bottom:-8px;
+    background:linear-gradient(180deg,var(--purple),transparent);
+  }
+  .step-num {
+    width:32px; height:32px; border-radius:50%; flex-shrink:0;
+    background:var(--purple-dim); border:2px solid var(--purple);
+    display:flex; align-items:center; justify-content:center;
+    font-size:.75rem; font-weight:800; color:var(--accent);
+    margin-top:.2rem;
+  }
+  .step-content { padding-bottom:2rem; flex:1; }
+  .step-label { font-size:.65rem; font-weight:700; text-transform:uppercase; letter-spacing:.1em; color:var(--accent); margin-bottom:.2rem; }
+  .step-title { font-size:1rem; font-weight:700; margin-bottom:.4rem; }
+  .step-body { color:var(--muted); font-size:.875rem; line-height:1.7; }
+  .step-img {
+    margin-top:.85rem;
+    background:var(--bg3); border:1px solid var(--border);
+    border-radius:8px; padding:.75rem;
+    display:flex; flex-direction:column; gap:.35rem;
+  }
+  .step-img-bar { height:7px; border-radius:3px; background:rgba(255,255,255,.12); }
+  .step-img-bar.c1 { background:var(--purple-lt); }
+  .step-img-bar.c2 { background:var(--yellow); }
+  .step-img-row { display:flex; gap:.4rem; }
+  .step-img-box { height:32px; flex:1; border-radius:4px; background:rgba(255,255,255,.07); }
+  .step-img-box.b1 { background:rgba(164,90,61,.22); }
+  .step-img-box.b2 { background:rgba(217,191,119,.26); }
+
+  .modal-outcome {
+    margin-top:1rem; background:rgba(217,191,119,.16);
+    border:1px solid rgba(107,66,38,.16); border-radius:10px;
+    padding:1.25rem 1.5rem;
+  }
+  .modal-outcome-label { font-size:.7rem; font-weight:700; text-transform:uppercase; letter-spacing:.1em; color:var(--accent); margin-bottom:.4rem; }
+  .modal-outcome p { font-size:.875rem; color:var(--white); line-height:1.65; }
+
+  /* click hint on card */
+
+  /* PHONE LAYOUT */
+  @media (max-width:720px) {
+    html, body { width:100%; max-width:100%; overflow-x:hidden; }
+
+    nav {
+      height:auto;
+      min-height:58px;
+      flex-wrap:wrap;
+      padding:.65rem 1rem;
+      gap:.75rem;
+    }
+    .nav-logo { font-size:3rem; white-space:nowrap; }
+    .nav-links {
+      order:3;
+      width:100%;
+      display:flex;
+      justify-content:space-between;
+      gap:.35rem;
+      padding-top:.35rem;
+      border-top:1px solid rgba(107,66,38,0.14);
+    }
+    .nav-links a {
+      display:block;
+      padding:.25rem .15rem;
+      font-size:.74rem;
+    }
+    .nav-right { gap:.5rem; margin-left:auto; }
+    .nav-resume, .nav-cta {
+      padding:.45rem .7rem;
+      font-size:.75rem;
+      border-radius:7px;
+      white-space:nowrap;
+    }
+
+    .hero {
+      min-height:auto;
+      padding:136px 1.1rem 48px;
+    }
+    .hero-eyebrow {
+      font-size:.68rem;
+      letter-spacing:.08em;
+      line-height:1.4;
+      align-items:flex-start;
+    }
+    .hero-eyebrow::before {
+      width:1.3rem;
+      margin-top:.55rem;
+      flex-shrink:0;
+    }
+    .hero h1 {
+      font-size:2.35rem;
+      line-height:1.08;
+      letter-spacing:0;
+      max-width:100%;
+      overflow-wrap:anywhere;
+    }
+    .hero p {
+      font-size:.95rem;
+      line-height:1.65;
+      max-width:100%;
+    }
+    .hero-btns {
+      flex-direction:column;
+      align-items:stretch;
+      gap:.75rem;
+    }
+    .btn-primary, .btn-outline, .btn-resume, .btn-dl {
+      display:flex;
+      width:100%;
+      justify-content:center;
+      text-align:center;
+      padding:.78rem 1rem;
+    }
+    .hero-aside {
+      margin-top:1.5rem;
+      gap:.6rem;
+    }
+
+    .stats {
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:1.25rem;
+      padding:1.75rem 1rem;
+    }
+    .stat-num { font-size:1.65rem; }
+    .stat-label { font-size:.68rem; }
+
+    .section { padding:56px 1.1rem; }
+    .section-heading {
+      font-size:1.85rem;
+      letter-spacing:0;
+    }
+    .section-sub { font-size:.94rem; }
+    .skills-grid {
+      grid-template-columns:1fr;
+      gap:1rem;
+      margin-top:2rem;
+    }
+    .skill-card, .project-body, .edu-card {
+      padding:1.1rem;
+    }
+    .about-img-placeholder {
+      max-height:360px;
+      font-size:3.5rem;
+    }
+    .projects-header {
+      align-items:flex-start;
+      margin-bottom:2rem;
+    }
+    .project-tag, .project-domain {
+      max-width:calc(50% - .9rem);
+      overflow:hidden;
+      text-overflow:ellipsis;
+      white-space:nowrap;
+    }
+    .stack-pill {
+      width:100%;
+      padding:.7rem 1rem;
+    }
+    .contact-card {
+      margin-top:2rem;
+      padding:1.35rem;
+      border-radius:12px;
+    }
+    .contact-link {
+      max-width:100%;
+      overflow-wrap:anywhere;
+      text-align:left;
+    }
+    footer {
+      padding:1.5rem 1rem;
+      align-items:flex-start;
+      flex-direction:column;
+    }
+    .footer-links {
+      flex-wrap:wrap;
+      gap:.85rem 1.25rem;
+    }
+
+    .modal-overlay {
+      padding:.75rem;
+      align-items:flex-start;
+    }
+    .modal {
+      max-width:100%;
+      margin:0;
+      border-radius:12px;
+    }
+    .modal-hero { height:140px; }
+    .modal-body { padding:1.25rem; }
+    .modal-title {
+      font-size:1.45rem;
+      letter-spacing:0;
+      line-height:1.15;
+    }
+    .modal-subtitle { font-size:.86rem; }
+    .step {
+      gap:.8rem;
+    }
+    .step-title {
+      font-size:.95rem;
+      overflow-wrap:anywhere;
+    }
+    .step-body {
+      font-size:.84rem;
+      line-height:1.65;
+      overflow-wrap:anywhere;
+    }
+    .modal-outcome {
+      padding:1rem;
+    }
+  }
+
+  @media (max-width:390px) {
+    nav {
+      align-items:flex-start;
+      flex-direction:column;
+    }
+    .nav-right {
+      width:100%;
+      margin-left:0;
+    }
+    .nav-resume, .nav-cta {
+      flex:1;
+      text-align:center;
+    }
+    .nav-links {
+      justify-content:flex-start;
+      flex-wrap:wrap;
+      gap:.25rem .75rem;
+    }
+    .nav-links a { font-size:.72rem; }
+    .hero {
+      padding-top:168px;
+    }
+    .hero h1 { font-size:2rem; }
+    .stats { grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Data with Abdullah<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="./resume.pdf" target="_blank" rel="noopener" class="nav-resume">📄 Resume</a>
+    <a href="#contact" class="nav-cta">Say Hello</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">3rd Year Data Student · Dubai, UAE</div>
+  <h1>Engineering raw datasets into<br> <span class="underline">actionable</span> project visual insights</h1>
+  <p>I'm a third-year university student passionate about data analytics and business intelligence. I learn by doing — every project here is something I built to solve a real problem or explore a concept hands-on.</p>
+  <div class="hero-btns">
+    <a href="#projects" class="btn-primary">See My Projects</a>
+    <a href="#contact" class="btn-outline">Get In Touch</a>
+  </div>
+  <div class="hero-aside">
+    <div class="arrow">↓</div>
+    <p><strong>Still learning. Always building.</strong><br>SQL · Python · Power BI · Tableau</p>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="section" id="projects" style="background:var(--bg2)">
+  <div class="projects-header fade-in">
+    <div>
+      <div class="section-eyebrow">Portfolio</div>
+      <h2 class="section-heading">Projects </h2>
+      <p style="color:var(--muted);font-size:.9rem;margin-top:.5rem;">Short summaries are here for quick scanning. Each project links to a dedicated case study page with the full process.</p>
+    </div>
+  </div>
+
+  <div class="projects-grid">
+
+    <!-- CARD 1 -->
+    <article class="project-card fade-in">
+      <div class="project-thumb">
+        <span class="project-tag">Power BI</span><span class="project-domain">Retail</span>
+        <div class="project-thumb-inner">
+          <div class="thumb-bar a1"></div><div class="thumb-bar" style="width:80%"></div>
+          <div class="thumb-row"><div class="thumb-box f1"></div><div class="thumb-box"></div><div class="thumb-box f1"></div></div>
+          <div class="thumb-bar a2" style="margin-top:.25rem"></div>
+          <div class="thumb-row"><div class="thumb-box"></div><div class="thumb-box f2"></div></div>
+        </div>
+      </div>
+      <div class="project-body">
+        <h3><a class="project-title-link" href="projects/retail-sales-dashboard.html">Retail Sales Dashboard</a></h3>
+        <p>End-to-end Power BI project from raw sales data to an interactive executive dashboard with DAX KPIs.</p>
+        <div class="project-tools">
+          <span class="tool-logo"><!-- Power BI SVG --><svg viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#F2C811"/><rect x="8" y="18" width="4" height="8" rx="1" fill="#333"/><rect x="14" y="12" width="4" height="14" rx="1" fill="#333"/><rect x="20" y="6" width="4" height="20" rx="1" fill="#333"/></svg>Power BI</span>
+          <span class="tool-logo"><svg viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#0078d4"/><text x="4" y="22" font-size="14" font-weight="bold" fill="white" font-family="monospace">SQL</text></svg>SQL</span>
+          <span class="tool-logo"><svg viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#1d6f42"/><text x="6" y="22" font-size="13" font-weight="bold" fill="white" font-family="sans-serif">XL</text></svg>Excel</span>
+        </div>
+        <div class="project-actions">
+          <a class="project-link" href="projects/retail-sales-dashboard.html">Read case study</a>
+          <a class="github-link" href="https://github.com/M-Abdu1a" target="_blank" rel="noopener" aria-label="GitHub for Retail Sales Dashboard"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.02c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.23-1.28-5.23-5.68 0-1.25.45-2.28 1.18-3.08-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.16 1.18a10.9 10.9 0 0 1 5.75 0c2.19-1.49 3.15-1.18 3.15-1.18.63 1.58.24 2.75.12 3.04.74.8 1.18 1.83 1.18 3.08 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.13v3.15c0 .31.21.68.8.56A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg></a>
+        </div>
+      </div>
+    </article>
+
+    <!-- CARD 2 -->
+    <article class="project-card fade-in">
+      <div class="project-thumb">
+        <span class="project-tag">Python</span><span class="project-domain">Retail</span>
+        <div class="project-thumb-inner">
+          <div class="thumb-bar a1" style="width:90%"></div><div class="thumb-bar a3" style="width:60%"></div>
+          <div class="thumb-row" style="margin-top:.35rem"><div class="thumb-box"></div><div class="thumb-box f1"></div></div>
+          <div class="thumb-bar" style="width:75%;margin-top:.25rem"></div>
+        </div>
+      </div>
+      <div class="project-body">
+        <h3><a class="project-title-link" href="projects/abc-xyz-assortment-classifier.html">ABC / XYZ Assortment Classifier</a></h3>
+        <p>Python script that segments every SKU by revenue contribution and demand volatility.</p>
+        <div class="project-tools">
+          <span class="tool-logo"><svg viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#3776AB"/><text x="4" y="22" font-size="13" font-weight="bold" fill="#FFD43B" font-family="monospace">Py</text></svg>Python</span>
+          <span class="tool-logo"><svg viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#150458"/><text x="3" y="22" font-size="11" font-weight="bold" fill="white" font-family="monospace">pd</text></svg>Pandas</span>
+          <span class="tool-logo"><svg viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#1d6f42"/><text x="6" y="22" font-size="13" font-weight="bold" fill="white" font-family="sans-serif">XL</text></svg>Excel</span>
+        </div>
+        <div class="project-actions">
+          <a class="project-link" href="projects/abc-xyz-assortment-classifier.html">Read case study</a>
+          <a class="github-link" href="https://github.com/M-Abdu1a" target="_blank" rel="noopener" aria-label="GitHub for ABC XYZ Assortment Classifier"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.02c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.23-1.28-5.23-5.68 0-1.25.45-2.28 1.18-3.08-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.16 1.18a10.9 10.9 0 0 1 5.75 0c2.19-1.49 3.15-1.18 3.15-1.18.63 1.58.24 2.75.12 3.04.74.8 1.18 1.83 1.18 3.08 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.13v3.15c0 .31.21.68.8.56A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg></a>
+        </div>
+      </div>
+    </article>
+
+    <!-- CARD 3 -->
+    <article class="project-card fade-in">
+      <div class="project-thumb">
+        <span class="project-tag">Tableau</span><span class="project-domain">Sales</span>
+        <div class="project-thumb-inner">
+          <div class="thumb-row"><div class="thumb-box f2"></div><div class="thumb-box f2"></div><div class="thumb-box"></div></div>
+          <div class="thumb-bar a3" style="margin-top:.35rem"></div><div class="thumb-bar" style="width:65%"></div>
+          <div class="thumb-row" style="margin-top:.25rem"><div class="thumb-box f1"></div><div class="thumb-box f1"></div><div class="thumb-box f2"></div></div>
+        </div>
+      </div>
+      <div class="project-body">
+        <h3><a class="project-title-link" href="projects/sales-performance-dashboard.html">Sales Performance Dashboard</a></h3>
+        <p>Tableau dashboard tracking revenue, margin, and YoY growth — built using the Superstore dataset.</p>
+        <div class="project-tools">
+          <span class="tool-logo"><svg viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#E97627"/><text x="4" y="22" font-size="11" font-weight="bold" fill="white" font-family="sans-serif">TAB</text></svg>Tableau</span>
+          <span class="tool-logo"><svg viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#0078d4"/><text x="4" y="22" font-size="14" font-weight="bold" fill="white" font-family="monospace">SQL</text></svg>SQL</span>
+        </div>
+        <div class="project-actions">
+          <a class="project-link" href="projects/sales-performance-dashboard.html">Read case study</a>
+          <a class="github-link" href="https://github.com/M-Abdu1a" target="_blank" rel="noopener" aria-label="GitHub for Sales Performance Dashboard"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.02c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.23-1.28-5.23-5.68 0-1.25.45-2.28 1.18-3.08-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.16 1.18a10.9 10.9 0 0 1 5.75 0c2.19-1.49 3.15-1.18 3.15-1.18.63 1.58.24 2.75.12 3.04.74.8 1.18 1.83 1.18 3.08 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.13v3.15c0 .31.21.68.8.56A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg></a>
+        </div>
+      </div>
+    </article>
+
+    <!-- CARD 4 -->
+    <article class="project-card fade-in">
+      <div class="project-thumb">
+        <span class="project-tag">Databricks</span><span class="project-domain">Engineering</span>
+        <div class="project-thumb-inner">
+          <div class="thumb-row"><div class="thumb-box f1"></div><div class="thumb-box"></div><div class="thumb-box f1"></div><div class="thumb-box f1"></div></div>
+          <div class="thumb-bar a2" style="margin-top:.4rem"></div><div class="thumb-bar" style="width:50%"></div>
+          <div class="thumb-row" style="margin-top:.3rem"><div class="thumb-box f2"></div><div class="thumb-box"></div></div>
+        </div>
+      </div>
+      <div class="project-body">
+        <h3><a class="project-title-link" href="projects/medallion-data-pipeline.html">Medallion Data Pipeline</a></h3>
+        <p>Bronze → Silver → Gold Databricks pipeline ingesting raw CSVs into a Power BI semantic model.</p>
+        <div class="project-tools">
+          <span class="tool-logo"><svg viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#FF3621"/><text x="4" y="22" font-size="10" font-weight="bold" fill="white" font-family="sans-serif">DBX</text></svg>Databricks</span>
+          <span class="tool-logo"><svg viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#3776AB"/><text x="4" y="22" font-size="13" font-weight="bold" fill="#FFD43B" font-family="monospace">Py</text></svg>PySpark</span>
+          <span class="tool-logo"><svg viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#F2C811"/><rect x="8" y="18" width="4" height="8" rx="1" fill="#333"/><rect x="14" y="12" width="4" height="14" rx="1" fill="#333"/><rect x="20" y="6" width="4" height="20" rx="1" fill="#333"/></svg>Power BI</span>
+        </div>
+        <div class="project-actions">
+          <a class="project-link" href="projects/medallion-data-pipeline.html">Read case study</a>
+          <a class="github-link" href="https://github.com/M-Abdu1a" target="_blank" rel="noopener" aria-label="GitHub for Medallion Data Pipeline"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.02c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.23-1.28-5.23-5.68 0-1.25.45-2.28 1.18-3.08-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.16 1.18a10.9 10.9 0 0 1 5.75 0c2.19-1.49 3.15-1.18 3.15-1.18.63 1.58.24 2.75.12 3.04.74.8 1.18 1.83 1.18 3.08 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.13v3.15c0 .31.21.68.8.56A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg></a>
+        </div>
+      </div>
+    </article>
+
+    <!-- CARD 5 -->
+    <article class="project-card fade-in">
+      <div class="project-thumb">
+        <span class="project-tag">Power BI</span><span class="project-domain">E-Commerce</span>
+        <div class="project-thumb-inner">
+          <div class="thumb-bar a3" style="width:85%"></div>
+          <div class="thumb-row" style="margin-top:.4rem"><div class="thumb-box f1"></div><div class="thumb-box f2"></div><div class="thumb-box"></div></div>
+          <div class="thumb-bar" style="width:70%;margin-top:.3rem"></div>
+          <div class="thumb-bar a1" style="width:45%;margin-top:.2rem"></div>
+        </div>
+      </div>
+      <div class="project-body">
+        <h3><a class="project-title-link" href="projects/customer-behavior-dashboard.html">Customer Behavior Dashboard</a></h3>
+        <p>Tracks segments, purchase frequency, and basket size. Built to practise DAX time intelligence functions.</p>
+        <div class="project-tools">
+          <span class="tool-logo"><svg viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#F2C811"/><rect x="8" y="18" width="4" height="8" rx="1" fill="#333"/><rect x="14" y="12" width="4" height="14" rx="1" fill="#333"/><rect x="20" y="6" width="4" height="20" rx="1" fill="#333"/></svg>Power BI</span>
+          <span class="tool-logo"><svg viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#0078d4"/><text x="4" y="22" font-size="14" font-weight="bold" fill="white" font-family="monospace">SQL</text></svg>SQL</span>
+        </div>
+        <div class="project-actions">
+          <a class="project-link" href="projects/customer-behavior-dashboard.html">Read case study</a>
+          <a class="github-link" href="https://github.com/M-Abdu1a" target="_blank" rel="noopener" aria-label="GitHub for Customer Behavior Dashboard"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.02c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.23-1.28-5.23-5.68 0-1.25.45-2.28 1.18-3.08-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.16 1.18a10.9 10.9 0 0 1 5.75 0c2.19-1.49 3.15-1.18 3.15-1.18.63 1.58.24 2.75.12 3.04.74.8 1.18 1.83 1.18 3.08 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.13v3.15c0 .31.21.68.8.56A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg></a>
+        </div>
+      </div>
+    </article>
+
+    <!-- CARD 6 -->
+    <article class="project-card fade-in">
+      <div class="project-thumb">
+        <span class="project-tag">Python App</span><span class="project-domain">Retail</span>
+        <div class="project-thumb-inner">
+          <div class="thumb-bar a1" style="width:65%"></div><div class="thumb-bar" style="width:85%;margin-top:.2rem"></div>
+          <div class="thumb-row" style="margin-top:.4rem"><div class="thumb-box f1"></div><div class="thumb-box f2"></div><div class="thumb-box f1"></div></div>
+          <div class="thumb-bar a3" style="width:55%;margin-top:.3rem"></div>
+        </div>
+      </div>
+      <div class="project-body">
+        <h3><a class="project-title-link" href="projects/availability-gap-finder.html">Availability Gap Finder Web App</a></h3>
+        <p>A multi-phase web app I'm actively building — pure Python backend, SQLite, and vanilla JS frontend.</p>
+        <div class="project-tools">
+          <span class="tool-logo"><svg viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#3776AB"/><text x="4" y="22" font-size="13" font-weight="bold" fill="#FFD43B" font-family="monospace">Py</text></svg>Python</span>
+          <span class="tool-logo"><svg viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#003B57"/><text x="3" y="22" font-size="10" font-weight="bold" fill="white" font-family="sans-serif">SQLite</text></svg>SQLite</span>
+          <span class="tool-logo"><svg viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#f7df1e"/><text x="5" y="22" font-size="12" font-weight="bold" fill="#333" font-family="monospace">JS</text></svg>JS</span>
+        </div>
+        <div class="project-actions">
+          <a class="project-link" href="projects/availability-gap-finder.html">Read case study</a>
+          <a class="github-link" href="https://github.com/M-Abdu1a" target="_blank" rel="noopener" aria-label="GitHub for Availability Gap Finder Web App"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.02c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.23-1.28-5.23-5.68 0-1.25.45-2.28 1.18-3.08-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.16 1.18a10.9 10.9 0 0 1 5.75 0c2.19-1.49 3.15-1.18 3.15-1.18.63 1.58.24 2.75.12 3.04.74.8 1.18 1.83 1.18 3.08 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.13v3.15c0 .31.21.68.8.56A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg></a>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+
+
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="about-split">
+    <div class="fade-in">
+      <div class="about-img-placeholder">👤</div>
+      <div class="edu-card">
+        <div class="edu-icon">🎓</div>
+        <div>
+          <div class="edu-label">Currently Studying</div>
+          <div class="edu-name">BSc Data Analytics</div>
+          <div class="edu-sub">3rd Year · Middlesex University · 2024–2027</div>
+        </div>
+      </div>
+    </div>
+    <div class="fade-in">
+      <div class="section-eyebrow">About Me</div>
+      <h2 class="section-heading">Hi, I'm <span class="hi">Abdullah</span> —<br>a student who learns by building</h2>
+      <p class="section-sub">I'm a third-year university student based in Dubai, UAE. Rather than waiting until graduation, I've been building real projects to teach myself the tools that actually matter — SQL, Python, Power BI, and more. This portfolio is a record of that journey so far.</p>
+      <ul class="check-list">
+        <li>Built 10+ projects spanning retail, finance, and e-commerce datasets</li>
+        <li>Self-taught in Power BI, DAX, and Databricks alongside my degree</li>
+        <li>Focused on practical, stakeholder-ready outputs — not just notebooks</li>
+        <li>Experimenting with Microsoft Fabric and Python web apps</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+
+
+<!-- TECH STACK -->
+<section class="section">
+  <div class="fade-in">
+    <div class="section-eyebrow">Toolkit</div>
+    <h2 class="section-heading">Technologies I've been learning</h2>
+  </div>
+  <div class="stack-pills">
+    <div class="stack-pill fade-in">
+      <svg viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#3776AB"/><text x="4" y="22" font-size="13" font-weight="bold" fill="#FFD43B" font-family="monospace">Py</text></svg> Python
+    </div>
+    <div class="stack-pill fade-in">
+      <svg viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#0078d4"/><text x="4" y="22" font-size="14" font-weight="bold" fill="white" font-family="monospace">SQL</text></svg> SQL / T-SQL
+    </div>
+    <div class="stack-pill fade-in">
+      <svg viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#F2C811"/><rect x="8" y="18" width="4" height="8" rx="1" fill="#333"/><rect x="14" y="12" width="4" height="14" rx="1" fill="#333"/><rect x="20" y="6" width="4" height="20" rx="1" fill="#333"/></svg> Power BI
+    </div>
+    <div class="stack-pill fade-in">
+      <svg viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#E97627"/><text x="4" y="22" font-size="11" font-weight="bold" fill="white" font-family="sans-serif">TAB</text></svg> Tableau
+    </div>
+    <div class="stack-pill fade-in">
+      <svg viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#1d6f42"/><text x="6" y="22" font-size="13" font-weight="bold" fill="white" font-family="sans-serif">XL</text></svg> Excel / Power Query
+    </div>
+    <div class="stack-pill fade-in">
+      <svg viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#FF3621"/><text x="4" y="22" font-size="10" font-weight="bold" fill="white" font-family="sans-serif">DBX</text></svg> Databricks
+    </div>
+    <div class="stack-pill fade-in">
+      <svg viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#01A6F0"/><text x="3" y="22" font-size="9" font-weight="bold" fill="white" font-family="sans-serif">Fabric</text></svg> Microsoft Fabric
+    </div>
+    <div class="stack-pill fade-in">
+      <svg viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#150458"/><text x="3" y="22" font-size="11" font-weight="bold" fill="white" font-family="monospace">pd</text></svg> Pandas
+    </div>
+    <div class="stack-pill fade-in">
+      <svg viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#f7df1e"/><text x="5" y="22" font-size="12" font-weight="bold" fill="#333" font-family="monospace">JS</text></svg> JavaScript
+    </div>
+    <div class="stack-pill fade-in">
+      <svg viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#003B57"/><text x="3" y="22" font-size="10" font-weight="bold" fill="white" font-family="sans-serif">SQLite</text></svg> SQLite
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section contact-section" id="contact">
+  <div class="fade-in">
+    <div class="section-eyebrow">Get In Touch</div>
+    <h2 class="section-heading">Let's connect</h2>
+  </div>
+  <div class="contact-card fade-in">
+    <p>Always happy to chat about data, projects, or anything analytics. Feel free to reach out.</p>
+    <div class="contact-links">
+      <a href="mailto:ab@example.com" class="contact-link">✉️ ab@example.com</a>
+      <a href="https://linkedin.com/in/ab" target="_blank" class="contact-link">🔗 linkedin.com/in/ab</a>
+      <a href="https://github.com/ab" target="_blank" class="contact-link">💾 github.com/ab</a>
+    </div>
+    <div class="resume-row">
+      <p>Want a summary of my skills and projects?</p>
+      <a href="./resume.pdf" target="_blank" rel="noopener" class="btn-dl">📄 Open My Resume</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Ab · Data Student · Dubai, UAE</p>
+  <div class="footer-links">
+    <a href="#projects">Projects</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </div>
+</footer>
+
+<!-- ══════════════════════════════════════
+     MODALS — case study walkthroughs
+══════════════════════════════════════ -->
+
+<!-- MODAL: Power BI Retail Dashboard -->
+<div class="modal-overlay" id="modal-pbi-retail">
+  <div class="modal">
+    <div class="modal-hero" style="background:linear-gradient(135deg,#E8DAB2,#D9BF77)">
+      <button class="modal-close" onclick="closeModal('pbi-retail')">✕</button>
+      <svg width="64" height="64" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#F2C811"/><rect x="8" y="18" width="4" height="8" rx="1" fill="#333"/><rect x="14" y="12" width="4" height="14" rx="1" fill="#333"/><rect x="20" y="6" width="4" height="20" rx="1" fill="#333"/></svg>
+    </div>
+    <div class="modal-body">
+      <div class="modal-tag">Power BI · Retail</div>
+      <div class="modal-title">Retail Sales Dashboard</div>
+      <div class="modal-subtitle">Full walkthrough from a blank .pbix file to a finished executive dashboard with live DAX KPIs and drill-through pages.</div>
+      <div class="modal-tools">
+        <span class="tool-logo"><svg viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#F2C811"/><rect x="8" y="18" width="4" height="8" rx="1" fill="#333"/><rect x="14" y="12" width="4" height="14" rx="1" fill="#333"/><rect x="20" y="6" width="4" height="20" rx="1" fill="#333"/></svg>Power BI</span>
+        <span class="tool-logo"><svg viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#0078d4"/><text x="4" y="22" font-size="14" font-weight="bold" fill="white" font-family="monospace">SQL</text></svg>SQL</span>
+        <span class="tool-logo"><svg viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#1d6f42"/><text x="6" y="22" font-size="13" font-weight="bold" fill="white" font-family="sans-serif">XL</text></svg>Excel</span>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <div class="step-label">Requirement Gathering</div>
+            <div class="step-title">Blank file → Understanding what the dashboard needs to answer</div>
+            <div class="step-body">Started with a blank .pbix file and a list of business questions: Which products are driving revenue? Which regions are underperforming? What does YoY growth look like? Writing down the questions first before touching any data helped shape the entire design.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <div class="step-label">Data Source & Power Query</div>
+            <div class="step-title">Loading and cleaning the raw sales CSV in Power Query</div>
+            <div class="step-body">Imported the raw Excel sales flat table. Used Power Query to remove blank rows, fix date formats, split a combined Region-Country column, and rename fields to something readable. Also created a Date dimension table here using M code so I could enable proper time intelligence later.</div>
+            <div class="step-img">
+              <div class="step-img-bar c1" style="width:70%"></div>
+              <div class="step-img-row"><div class="step-img-box b1"></div><div class="step-img-box"></div><div class="step-img-box b1"></div></div>
+              <div class="step-img-bar" style="width:55%"></div>
+            </div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <div class="step-label">Data Modelling</div>
+            <div class="step-title">Building the star schema and setting up relationships</div>
+            <div class="step-body">Connected the fact sales table to the Date, Product, Region, and Customer dimension tables with one-to-many relationships. Made sure all relationships were active and filter direction was set correctly so DAX would behave as expected.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <div class="step-label">DAX Measures</div>
+            <div class="step-title">Writing the KPI measures: Total Sales, YoY%, Running Total, Top N</div>
+            <div class="step-body">Created a dedicated Measures table. Key measures included: Total Sales, Gross Margin %, YoY Growth using SAMEPERIODLASTYEAR, Running Total using CALCULATE + DATESINPERIOD, and a Top 10 Products measure using RANKX. Each measure was tested in a table visual before being placed on the report canvas.</div>
+            <div class="step-img">
+              <div class="step-img-bar c2" style="width:80%"></div>
+              <div class="step-img-row"><div class="step-img-box b2"></div><div class="step-img-box b1"></div></div>
+              <div class="step-img-bar" style="width:60%"></div>
+            </div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">5</div>
+          <div class="step-content">
+            <div class="step-label">Report Design</div>
+            <div class="step-title">Building the canvas: KPI cards, bar charts, map, and drill-through</div>
+            <div class="step-body">Designed 3 pages: an Executive Summary with KPI cards and a clustered bar by region; a Product Analysis page with a matrix and waterfall chart; and a Drill-Through page that activates when you right-click any product row. Used a dark theme and consistent colour coding for positive/negative values.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">6</div>
+          <div class="step-content">
+            <div class="step-label">Review & Publish</div>
+            <div class="step-title">Testing filters, fixing cross-filter behaviour, publishing to the web</div>
+            <div class="step-body">Ran through every slicer combination to check for unexpected blank values or broken measures. Fixed one cross-filter issue where the product matrix was filtering the date slicer. Published to Power BI Service and set up a public embed link.</div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-outcome">
+        <div class="modal-outcome-label">What I learned</div>
+        <p>Proper star schema setup makes DAX dramatically easier. The biggest time sink was always Power Query, not the visuals. Writing requirements first saved me from redesigning the canvas halfway through.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: Python ABC -->
+<div class="modal-overlay" id="modal-python-abc">
+  <div class="modal">
+    <div class="modal-hero" style="background:linear-gradient(135deg,#F6EED7,#C4B6A6)">
+      <button class="modal-close" onclick="closeModal('python-abc')">✕</button>
+      <svg width="64" height="64" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#3776AB"/><text x="4" y="22" font-size="13" font-weight="bold" fill="#FFD43B" font-family="monospace">Py</text></svg>
+    </div>
+    <div class="modal-body">
+      <div class="modal-tag">Python · Retail Analytics</div>
+      <div class="modal-title">ABC / XYZ Assortment Classifier</div>
+      <div class="modal-subtitle">A Python script that automatically categorises every SKU by revenue contribution (ABC) and demand volatility (XYZ) — helping decide what to keep, grow, or cut.</div>
+      <div class="modal-tools">
+        <span class="tool-logo"><svg viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#3776AB"/><text x="4" y="22" font-size="13" font-weight="bold" fill="#FFD43B" font-family="monospace">Py</text></svg>Python</span>
+        <span class="tool-logo"><svg viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#150458"/><text x="3" y="22" font-size="11" font-weight="bold" fill="white" font-family="monospace">pd</text></svg>Pandas</span>
+        <span class="tool-logo"><svg viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#1d6f42"/><text x="6" y="22" font-size="13" font-weight="bold" fill="white" font-family="sans-serif">XL</text></svg>Excel</span>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-content"><div class="step-label">Problem Definition</div><div class="step-title">Why ABC/XYZ? Understanding the classification logic</div><div class="step-body">ABC classifies SKUs by cumulative revenue share: A items = top 70%, B = next 20%, C = bottom 10%. XYZ adds a volatility layer using coefficient of variation on weekly sales. A-X items are your stars; C-Z items are candidates for removal. I read up on this in retail operations articles before writing any code.</div></div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-content"><div class="step-label">Data Preparation</div><div class="step-title">Loading and reshaping weekly sales data with Pandas</div><div class="step-body">Loaded a multi-week sales CSV. Used groupby to aggregate by SKU and week, then pivoted to a wide format (SKUs as rows, weeks as columns). Handled missing weeks by filling with 0 — an important decision since absent weeks are genuinely zero-sales, not nulls.</div><div class="step-img"><div class="step-img-bar c1" style="width:90%"></div><div class="step-img-row"><div class="step-img-box b1"></div><div class="step-img-box"></div><div class="step-img-box b1"></div><div class="step-img-box b2"></div></div></div></div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-content"><div class="step-label">ABC Classification</div><div class="step-title">Calculating cumulative revenue share and assigning tiers</div><div class="step-body">Summed total revenue per SKU, sorted descending, calculated cumulative percentage, then used pd.cut() with the 70/90/100 breakpoints to assign A, B, or C. Verified the output against a manual calculation in Excel first.</div></div></div>
+        <div class="step"><div class="step-num">4</div><div class="step-content"><div class="step-label">XYZ Classification</div><div class="step-title">Calculating coefficient of variation for demand stability</div><div class="step-body">For each SKU, calculated std / mean across all weeks to get the CV. Buckets: X = CV &lt; 0.5 (stable), Y = 0.5–1.0 (variable), Z = &gt;1.0 (highly erratic). Combined with ABC to create a 9-cell matrix (AX, AY, AZ, BX... CZ).</div></div></div>
+        <div class="step"><div class="step-num">5</div><div class="step-content"><div class="step-label">Output & Export</div><div class="step-title">Exporting a colour-coded Excel report with openpyxl</div><div class="step-body">Used openpyxl to write the classified DataFrame to Excel with conditional formatting — green for AX, yellow for BY, red for CZ. Added a pivot summary sheet showing counts and revenue per classification bucket. This made the output immediately usable without needing Python knowledge.</div></div></div>
+      </div>
+      <div class="modal-outcome"><div class="modal-outcome-label">What I learned</div><p>The hardest part was deciding how to treat missing data — zero vs null makes a huge difference in CV calculation. openpyxl for formatted Excel output was a new skill that made the results much more presentable.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: Tableau Sales -->
+<div class="modal-overlay" id="modal-tableau-sales">
+  <div class="modal">
+    <div class="modal-hero" style="background:linear-gradient(135deg,#E8DAB2,#D3B39A)">
+      <button class="modal-close" onclick="closeModal('tableau-sales')">✕</button>
+      <svg width="64" height="64" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#E97627"/><text x="4" y="22" font-size="11" font-weight="bold" fill="white" font-family="sans-serif">TAB</text></svg>
+    </div>
+    <div class="modal-body">
+      <div class="modal-tag">Tableau · Sales Analytics</div>
+      <div class="modal-title">Sales Performance Dashboard</div>
+      <div class="modal-subtitle">Built on the Superstore dataset — a full Tableau project from connecting data to publishing an interactive dashboard with YoY comparisons and regional breakdowns.</div>
+      <div class="modal-tools">
+        <span class="tool-logo"><svg viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#E97627"/><text x="4" y="22" font-size="11" font-weight="bold" fill="white" font-family="sans-serif">TAB</text></svg>Tableau</span>
+        <span class="tool-logo"><svg viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#0078d4"/><text x="4" y="22" font-size="14" font-weight="bold" fill="white" font-family="monospace">SQL</text></svg>SQL</span>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-content"><div class="step-label">Connect & Explore</div><div class="step-title">Connecting Tableau to the Superstore Excel file and exploring dimensions</div><div class="step-body">Connected Tableau Desktop to the Sample Superstore Excel workbook. Spent time in the Data Source tab understanding the schema — Orders, Returns, and People tables. Created a relationship join between Orders and Returns on Order ID.</div></div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-content"><div class="step-label">Calculated Fields</div><div class="step-title">Creating YoY growth, profit ratio, and running total calculations</div><div class="step-body">Used Tableau's calculation editor to write: YoY Sales Growth using LOOKUP(ZN(SUM([Sales])), -1), Profit Ratio as SUM([Profit])/SUM([Sales]), and a Running Total using RUNNING_SUM. Table calculations in Tableau behave differently from DAX — this took some trial and error to get right.</div></div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-content"><div class="step-label">Sheet Building</div><div class="step-title">Building individual chart sheets before assembling the dashboard</div><div class="step-body">Created 6 separate sheets: KPI bar chart, regional map, category breakdown tree map, monthly trend line, Top 10 customers table, and a scatter plot of Profit vs Discount. Building sheets separately first makes dashboard assembly much faster.</div></div></div>
+        <div class="step"><div class="step-num">4</div><div class="step-content"><div class="step-label">Dashboard Assembly</div><div class="step-title">Laying out sheets, adding filters, and setting up actions</div><div class="step-body">Used a fixed 1200×800 layout. Added a segment filter and a year filter as quick filters. Set up filter actions so clicking any region on the map filters all other charts. Also added a URL action on the customer table (placeholder for a CRM link).</div></div></div>
+        <div class="step"><div class="step-num">5</div><div class="step-content"><div class="step-label">Publish</div><div class="step-title">Publishing to Tableau Public and embedding</div><div class="step-body">Published to Tableau Public. Tested the embed on a blank HTML page to make sure all interactive elements worked in the browser. The map visual had a slight render lag on first load — a known Tableau Public limitation.</div></div></div>
+      </div>
+      <div class="modal-outcome"><div class="modal-outcome-label">What I learned</div><p>Tableau's table calculations are powerful but confusing at first — understanding "compute using" was the key unlock. Building sheets before the dashboard is a workflow habit I've kept ever since.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: Databricks Pipeline -->
+<div class="modal-overlay" id="modal-databricks-pipeline">
+  <div class="modal">
+    <div class="modal-hero" style="background:linear-gradient(135deg,#E8DAB2,#D9BF77)">
+      <button class="modal-close" onclick="closeModal('databricks-pipeline')">✕</button>
+      <svg width="64" height="64" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#FF3621"/><text x="4" y="22" font-size="10" font-weight="bold" fill="white" font-family="sans-serif">DBX</text></svg>
+    </div>
+    <div class="modal-body">
+      <div class="modal-tag">Databricks · Data Engineering</div>
+      <div class="modal-title">Medallion Data Pipeline</div>
+      <div class="modal-subtitle">A personal project to learn data lakehouse architecture — ingesting raw CSV sales data through Bronze, Silver, and Gold layers in Databricks, feeding a Power BI report.</div>
+      <div class="modal-tools">
+        <span class="tool-logo"><svg viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#FF3621"/><text x="4" y="22" font-size="10" font-weight="bold" fill="white" font-family="sans-serif">DBX</text></svg>Databricks</span>
+        <span class="tool-logo"><svg viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#3776AB"/><text x="4" y="22" font-size="13" font-weight="bold" fill="#FFD43B" font-family="monospace">Py</text></svg>PySpark</span>
+        <span class="tool-logo"><svg viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#F2C811"/><rect x="8" y="18" width="4" height="8" rx="1" fill="#333"/><rect x="14" y="12" width="4" height="14" rx="1" fill="#333"/><rect x="20" y="6" width="4" height="20" rx="1" fill="#333"/></svg>Power BI</span>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-content"><div class="step-label">Architecture Design</div><div class="step-title">Planning the Bronze → Silver → Gold layer structure</div><div class="step-body">Designed the three-layer architecture on paper first. Bronze = raw data landed as-is (no transformations, append-only). Silver = cleaned, typed, and deduplicated. Gold = aggregated business-ready tables (daily sales by region, top products by month). Mapped out which columns belong in each layer before writing any code.</div></div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-content"><div class="step-label">Bronze Layer</div><div class="step-title">Landing raw CSV files into Delta tables with autoloader</div><div class="step-body">Used Databricks Autoloader (cloudFiles) to ingest CSV files from a mounted storage path into a Delta table. Autoloader handles schema inference and new file detection automatically. Added ingestion_timestamp and source_file columns for auditability.</div><div class="step-img"><div class="step-img-bar" style="width:90%;background:#FF3621;opacity:.6"></div><div class="step-img-row"><div class="step-img-box b1"></div><div class="step-img-box b1"></div><div class="step-img-box"></div></div></div></div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-content"><div class="step-label">Silver Layer</div><div class="step-title">Cleaning, typing, and deduplicating with PySpark</div><div class="step-body">Read from Bronze Delta table. Applied: cast date strings to DateType, strip whitespace from product names, filter out rows where quantity ≤ 0 (data quality issue), and deduplicate using dropDuplicates on order_id + product_id. Wrote the result to a Silver Delta table with MERGE to handle incremental updates.</div></div></div>
+        <div class="step"><div class="step-num">4</div><div class="step-content"><div class="step-label">Gold Layer</div><div class="step-title">Aggregating business metrics into fact tables</div><div class="step-body">Created two Gold tables: daily_sales_by_region (date, region, total_revenue, total_units, avg_order_value) and product_performance (product_id, product_name, total_revenue, rank). Used window functions for running totals and rankings within PySpark SQL.</div></div></div>
+        <div class="step"><div class="step-num">5</div><div class="step-content"><div class="step-label">Power BI Connection</div><div class="step-title">Connecting Power BI to the Gold Delta tables via Databricks connector</div><div class="step-body">Used the native Databricks connector in Power BI Desktop (Import mode). Connected to the Gold layer tables, built a simple star schema, and created 4 DAX measures on top. Scheduled a daily refresh to keep the dashboard current.</div></div></div>
+      </div>
+      <div class="modal-outcome"><div class="modal-outcome-label">What I learned</div><p>Delta Lake's MERGE statement was the most valuable new concept — it handles upserts cleanly without needing to manage deduplication manually. The medallion architecture makes debugging much easier because you can always trace a Gold value back to its raw Bronze source.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: Customer Dashboard -->
+<div class="modal-overlay" id="modal-customer-dashboard">
+  <div class="modal">
+    <div class="modal-hero" style="background:linear-gradient(135deg,#F6EED7,#C4B6A6)">
+      <button class="modal-close" onclick="closeModal('customer-dashboard')">✕</button>
+      <svg width="64" height="64" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#F2C811"/><rect x="8" y="18" width="4" height="8" rx="1" fill="#333"/><rect x="14" y="12" width="4" height="14" rx="1" fill="#333"/><rect x="20" y="6" width="4" height="20" rx="1" fill="#333"/></svg>
+    </div>
+    <div class="modal-body">
+      <div class="modal-tag">Power BI · E-Commerce</div>
+      <div class="modal-title">Customer Behavior Dashboard</div>
+      <div class="modal-subtitle">Built to practise DAX time intelligence — tracks customer segments, purchase frequency, basket size, and identifies potential churn signals.</div>
+      <div class="modal-tools">
+        <span class="tool-logo"><svg viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#F2C811"/><rect x="8" y="18" width="4" height="8" rx="1" fill="#333"/><rect x="14" y="12" width="4" height="14" rx="1" fill="#333"/><rect x="20" y="6" width="4" height="20" rx="1" fill="#333"/></svg>Power BI</span>
+        <span class="tool-logo"><svg viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#0078d4"/><text x="4" y="22" font-size="14" font-weight="bold" fill="white" font-family="monospace">SQL</text></svg>SQL</span>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-content"><div class="step-label">Questions First</div><div class="step-title">Defining what "customer behaviour" questions to answer</div><div class="step-body">Listed the questions before opening Power BI: Who are our top 20% of customers by revenue? How often do customers return? What's the average basket size by segment? Which customers haven't bought in 90+ days? These became the measures I needed to build.</div></div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-content"><div class="step-label">RFM Segmentation in SQL</div><div class="step-title">Pre-calculating Recency, Frequency, Monetary scores in SQL before loading</div><div class="step-body">Wrote a SQL query to pre-calculate RFM scores (Recency = days since last purchase, Frequency = number of orders, Monetary = total spend) and assign segment labels (Champion, Loyal, At Risk, Lost). Loaded this as a separate Customer Segments table in Power BI.</div></div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-content"><div class="step-label">DAX Time Intelligence</div><div class="step-title">DATESINPERIOD, PARALLELPERIOD, and rolling 30/90 day measures</div><div class="step-body">This was the main learning goal. Built: Sales Last 30 Days, Sales Last 90 Days, MoM Growth %, Customer Count Last 30 Days, and a Churned Customers measure (customers who bought in the previous 90 days but not the last 30). CALCULATE + DATESINPERIOD is the core pattern for rolling windows.</div></div></div>
+        <div class="step"><div class="step-num">4</div><div class="step-content"><div class="step-label">Report Design</div><div class="step-title">Segment overview page + individual customer drill-through</div><div class="step-body">Page 1: segment distribution donut, KPI cards for each segment's revenue share, and a line chart of new vs returning customers over time. Page 2: drill-through from any customer segment to see individual customers in that group with their full purchase history.</div></div></div>
+      </div>
+      <div class="modal-outcome"><div class="modal-outcome-label">What I learned</div><p>Doing RFM segmentation in SQL before loading into Power BI (rather than trying to do it all in DAX) is dramatically simpler. DAX time intelligence requires a proper Date table with no gaps — this bit me early on and taught me to always build the Date table first.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: Gap Finder App -->
+<div class="modal-overlay" id="modal-gap-finder-app">
+  <div class="modal">
+    <div class="modal-hero" style="background:linear-gradient(135deg,#E8DAB2,#D3B39A)">
+      <button class="modal-close" onclick="closeModal('gap-finder-app')">✕</button>
+      <svg width="64" height="64" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#3776AB"/><text x="4" y="22" font-size="13" font-weight="bold" fill="#FFD43B" font-family="monospace">Py</text></svg>
+    </div>
+    <div class="modal-body">
+      <div class="modal-tag">Python · Retail · In Progress</div>
+      <div class="modal-title">Availability Gap Finder Web App</div>
+      <div class="modal-subtitle">An actively-built multi-phase web app that identifies which SKUs are missing from a retailer's range compared to competitor availability — with file uploads, saved reports, and month selection.</div>
+      <div class="modal-tools">
+        <span class="tool-logo"><svg viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#3776AB"/><text x="4" y="22" font-size="13" font-weight="bold" fill="#FFD43B" font-family="monospace">Py</text></svg>Python</span>
+        <span class="tool-logo"><svg viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#003B57"/><text x="3" y="22" font-size="10" font-weight="bold" fill="white" font-family="sans-serif">SQLite</text></svg>SQLite</span>
+        <span class="tool-logo"><svg viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#f7df1e"/><text x="5" y="22" font-size="12" font-weight="bold" fill="#333" font-family="monospace">JS</text></svg>Vanilla JS</span>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-content"><div class="step-label">Phase 1 — Core Logic</div><div class="step-title">Pure Python HTTP server + gap calculation engine</div><div class="step-body">Built the backend using Python's built-in http.server module (no frameworks). The gap engine takes two CSV inputs — our range and a competitor range — and returns SKUs present in competitor but missing from ours, grouped by category. All served as JSON over a simple REST-style API.</div></div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-content"><div class="step-label">Phase 1 — Frontend</div><div class="step-title">Vanilla JS frontend with file upload and results table</div><div class="step-body">Built the UI in pure HTML/CSS/JS — no frameworks. Two file inputs (our file, competitor file), a submit button that POSTs to the Python server, and a results table that renders the gap list dynamically. Learned how to use the Fetch API and handle multipart form data.</div><div class="step-img"><div class="step-img-bar" style="width:80%;background:#f7df1e;opacity:.5"></div><div class="step-img-row"><div class="step-img-box b2"></div><div class="step-img-box b1"></div><div class="step-img-box b2"></div></div></div></div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-content"><div class="step-label">Phase 2 — Persistence</div><div class="step-title">Adding SQLite to save reports and enable history</div><div class="step-body">Integrated SQLite so each gap analysis run gets saved with a timestamp and report name. Users can now load any past report without re-uploading files. Also added a "replace file" feature to update the stored range without clearing the report history.</div></div></div>
+        <div class="step"><div class="step-num">4</div><div class="step-content"><div class="step-label">Phase 2 — Month Selection</div><div class="step-title">Filtering gap results by month for trend comparison</div><div class="step-body">Added a month dropdown that filters the gap results to a selected period. This lets you compare: were the same SKUs missing in March and April, or did the gap shift? Involved restructuring the SQLite schema to store results with a period field.</div></div></div>
+        <div class="step"><div class="step-num">5</div><div class="step-content"><div class="step-label">Phase 3 — Planned</div><div class="step-title">Charts, export to Excel, and multi-user support</div><div class="step-body">Next phase: add a Chart.js visualisation of gap trends over time, an Excel export button using openpyxl, and basic session handling so multiple users can have separate report histories. Still in progress.</div></div></div>
+      </div>
+      <div class="modal-outcome"><div class="modal-outcome-label">What I learned</div><p>Building a full-stack app without any framework forces you to understand exactly what frameworks are abstracting. Routing, request parsing, and file handling in raw Python is tedious but now I understand it deeply. SQLite is surprisingly capable for a single-user web app.</p></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // PROJECT CARD TILT
+  document.querySelectorAll('.project-card').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const r = card.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width - 0.5;
+      const y = (e.clientY - r.top) / r.height - 0.5;
+      card.style.transform = `perspective(700px) rotateX(${y * -6}deg) rotateY(${x * 6}deg) translateY(-4px)`;
+    });
+    card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+  });
+
+  // STAT COUNT-UP
+  function animateCount(el) {
+    const text = el.textContent;
+    const match = text.match(/^(\d+)(.*)$/);
+    if (!match) return;
+    const target = parseInt(match[1], 10);
+    const suffixHTML = el.querySelector('span') ? el.querySelector('span').outerHTML : '';
+    const suffixText = match[2].replace(el.querySelector('span') ? el.querySelector('span').textContent : '', '');
+    let current = 0;
+    const duration = 900;
+    const start = performance.now();
+    function step(now) {
+      const progress = Math.min((now - start) / duration, 1);
+      current = Math.floor(progress * target);
+      el.innerHTML = current + suffixHTML;
+      if (progress < 1) requestAnimationFrame(step);
+      else el.innerHTML = target + suffixHTML;
+    }
+    requestAnimationFrame(step);
+  }
+  const statObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCount(entry.target);
+        statObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.stat-num').forEach(el => statObserver.observe(el));
+
+  // BUTTON RIPPLE
+  document.querySelectorAll('.btn-primary, .btn-outline, .nav-cta, .nav-resume, .btn-dl').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      const r = this.getBoundingClientRect();
+      const ripple = document.createElement('span');
+      const size = Math.max(r.width, r.height);
+      ripple.className = 'ripple';
+      ripple.style.width = ripple.style.height = size + 'px';
+      ripple.style.left = (e.clientX - r.left - size / 2) + 'px';
+      ripple.style.top = (e.clientY - r.top - size / 2) + 'px';
+      this.appendChild(ripple);
+      setTimeout(() => ripple.remove(), 600);
+    });
+  });
+
+  // FADE IN
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // MODAL
+  function openModal(id) {
+    document.getElementById('modal-' + id).classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal(id) {
+    document.getElementById('modal-' + id).classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  // close on overlay click
+  document.querySelectorAll('.modal-overlay').forEach(overlay => {
+    overlay.addEventListener('click', function(e) {
+      if (e.target === this) {
+        this.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+    });
+  });
+  // close on Escape
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.modal-overlay.open').forEach(m => {
+        m.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    }
+  });
+</script>
+</body>
+</html>

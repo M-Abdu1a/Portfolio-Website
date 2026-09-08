@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Analytics Project | Abdullah Haroon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="project-style.css">
+</head>
+<body class="bg-zinc-950 text-white">
+<nav class="fixed inset-x-0 top-0 z-50 border-b border-zinc-800/80 bg-zinc-950/95 backdrop-blur-xl">
+  <div class="mx-auto flex max-w-7xl items-center justify-between gap-6 px-6 py-4">
+    <a href="../index.html" class="nav-logo">Portfolio</a>
+    <div class="nav-right">
+      <a href="../resume.pdf" target="_blank" rel="noopener" class="nav-resume">Resume</a>
+      <a href="../index.html#contact" class="nav-cta">Contact me</a>
+    </div>
+  </div>
+</nav>
+<header class="page-hero pt-28 pb-14">
+  <div class="hero-inner mx-auto max-w-6xl px-6">
+    <div class="eyebrow">Power BI · Python · E-Commerce Analytics</div>
+    <h1 class="mt-4 text-4xl font-extrabold tracking-tight text-white sm:text-5xl">Marketing Analytics Business Case Study Project</h1>
+    <p class="mt-6 max-w-3xl text-lg leading-8 text-zinc-400">This project examines where an e-commerce customer journey loses conversions, which campaigns bring in customers, and what review text says about the customer experience.</p>
+    <div class="mt-8 flex flex-wrap items-center gap-4">
+      <a class="btn primary" href="../index.html#projects">Back to projects</a>
+    </div>
+  </div>
+</header>
+<main class="content mx-auto max-w-6xl px-6 pb-16 space-y-10">
+  <section class="rounded-3xl border border-zinc-800/85 bg-zinc-900/70 p-6 shadow-lg shadow-black/10 sm:p-8">
+    <div class="flex flex-wrap items-end justify-between gap-4">
+      <div>
+        <h2 class="section-title mb-2">Marketing Analytics Business Case Study</h2>
+        <p class="text-sm text-zinc-400">The full case study, including the analysis and dashboard work.</p>
+      </div>
+      <a class="btn primary" href="Case%20Study/Case%20Study.pdf" target="_blank" rel="noopener">Open PDF</a>
+    </div>
+    <iframe class="mt-6 w-full rounded-2xl border border-zinc-800" src="Case%20Study/Case%20Study.pdf" title="Marketing Analytics Business Case Study PDF" style="height: 720px;" loading="lazy"></iframe>
+  </section>
+    <section id="sql-data-preparation" class="rounded-3xl border border-zinc-800/85 bg-zinc-900/70 p-6 shadow-lg shadow-black/10 sm:p-8">
+    <details>
+      <summary class="cursor-pointer text-lg font-bold text-white">SQL Data Preparation</summary>
+      <p class="mt-3 text-sm text-zinc-400">These queries prepare the product, customer, review, engagement, and journey tables for reporting.</p>
+      <pre class="mt-6 overflow-x-auto rounded-2xl border border-zinc-800 bg-zinc-950 p-5 text-sm leading-7 text-zinc-300"><code>-- Price Categorization
+  SELECT *,
+    CASE
+      WHEN Price &lt; 50 THEN 'Low'
+      WHEN Price BETWEEN 50 AND 200 THEN 'Medium'
+      ELSE 'High'
+    END AS PriceCategory
+  FROM products
+  ORDER BY PriceCategory ASC;
+
+  -- Data Enrichment
+  SELECT
+    C.CustomerID,
+    C.CustomerName,
+    C.Email,
+    C.Age,
+    C.Gender,
+    G.City,
+    G.Country
+  FROM customers AS C
+  LEFT JOIN geography AS G
+    ON C.GeographyID = G.GeographyID;
+
+  -- Review Text Cleaning
+  SELECT
+    ReviewID,
+    CustomerID,
+    ProductID,
+    ReviewDate,
+    Rating,
+    REPLACE(ReviewText, '  ', ' ') AS ReviewText
+  FROM customer_reviews;
+
+  -- Engagement Data Transformation
+  SELECT
+    EngagementID,
+    ContentID,
+    REPLACE(LOWER(ContentType), 'socialmedia', 'Social Media') AS ContentType,
+    Likes,
+    EngagementDate,
+    CampaignID,
+    ProductID,
+    LEFT(ViewsClicksCombined, CHARINDEX('-', ViewsClicksCombined) - 1) AS Views,
+    RIGHT(ViewsClicksCombined, LEN(ViewsClicksCombined) - CHARINDEX('-', ViewsClicksCombined)) AS Clicks
+  FROM engagement_data
+  WHERE ContentType != 'Newsletter';
+
+  -- Duplicate Record Detection
+  WITH DuplicateRecords AS (
+    SELECT
+      JourneyID,
+      CustomerID,
+      ProductID,
+      VisitDate,
+      Stage,
+      Action,
+      Duration,
+      ROW_NUMBER() OVER (
+        PARTITION BY CustomerID, ProductID, VisitDate, Stage, Action
+        ORDER BY JourneyID
+      ) AS row_num
+    FROM customer_journey
+  )
+  SELECT *
+  FROM DuplicateRecords
+  WHERE row_num &gt; 1;
+
+  -- Deduplication and Missing-Value Handling
+  SELECT
+    JourneyID,
+    CustomerID,
+    ProductID,
+    VisitDate,
+    Stage,
+    Action,
+    COALESCE(Duration, avg_duration) AS Duration
+  FROM (
+    SELECT
+      JourneyID,
+      CustomerID,
+      ProductID,
+      VisitDate,
+      Stage,
+      Action,
+      Duration,
+      AVG(Duration) OVER (PARTITION BY VisitDate) AS avg_duration,
+      ROW_NUMBER() OVER (
+        PARTITION BY CustomerID, ProductID, VisitDate, Stage, Action
+        ORDER BY JourneyID
+      ) AS row_num
+    FROM customer_journey
+  ) AS Subquery
+  WHERE row_num = 1;</code></pre>
+    </details>
+    </section>
+    <section id="python-sentiment-analysis" class="rounded-3xl border border-zinc-800/85 bg-zinc-900/70 p-6 shadow-lg shadow-black/10 sm:p-8">
+    <details>
+      <summary class="cursor-pointer text-lg font-bold text-white">Python Sentiment Analysis</summary>
+      <p class="mt-3 text-sm text-zinc-400">This script scores review text and combines the result with the review rating.</p>
+      <pre class="mt-6 overflow-x-auto rounded-2xl border border-zinc-800 bg-zinc-950 p-5 text-sm leading-7 text-zinc-300"><code>import pandas as pd
+  from sqlalchemy import create_engine
+  import urllib
+  import nltk
+  from nltk.sentiment.vader import SentimentIntensityAnalyzer
+
+  nltk.download('vader_lexicon')
+
+  def fetch_data_from_sql():
+    server = r"Abdullah\SQLEXPRESS"
+    database = "PortfolioProject_MarketingAnalytics"
+
+    conn_str = (
+      f"Driver={{SQL Server}};"
+      f"Server={server};"
+      f"Database={database};"
+      f"Trusted_Connection=yes;"
+    )
+
+    params = urllib.parse.quote_plus(conn_str)
+    engine = create_engine(f"mssql+pyodbc:///?odbc_connect={params}")
+    query = "SELECT ReviewID, CustomerID, ProductID, ReviewDate, Rating, ReviewText FROM PortfolioProject_MarketingAnalytics.dbo.customer_reviews"
+
+    with engine.connect() as conn:
+      df = pd.read_sql(query, conn)
+
+    return df
+
+  customer_reviews_df = fetch_data_from_sql()
+  sia = SentimentIntensityAnalyzer()
+
+  def calculate_sentiment(review):
+    if pd.isna(review):
+      return 0.0
+    return sia.polarity_scores(str(review))['compound']
+
+  def categorize_sentiment(score, rating):
+    if score &gt; 0.05:
+      if rating &gt;= 4:
+        return 'Positive'
+      elif rating == 3:
+        return 'Mixed Positive'
+      else:
+        return 'Mixed Negative'
+    elif score &lt; -0.05:
+      if rating &lt;= 2:
+        return 'Negative'
+      elif rating == 3:
+        return 'Mixed Negative'
+      else:
+        return 'Mixed Positive'
+    else:
+      if rating &gt;= 4:
+        return 'Positive'
+      elif rating &lt;= 2:
+        return 'Negative'
+      else:
+        return 'Neutral'
+
+  def sentiment_bucket(score):
+    if score &gt;= 0.5:
+      return '0.5 to 1.0'
+    elif 0.0 &lt;= score &lt; 0.5:
+      return '0.0 to 0.49'
+    elif -0.5 &lt;= score &lt; 0.0:
+      return '-0.49 to 0.0'
+    else:
+      return '-1.0 to -0.5'
+
+  customer_reviews_df['SentimentScore'] = customer_reviews_df['ReviewText'].apply(calculate_sentiment)
+  customer_reviews_df['SentimentCategory'] = customer_reviews_df.apply(
+    lambda row: categorize_sentiment(row['SentimentScore'], row['Rating']), axis=1)
+  customer_reviews_df['SentimentBucket'] = customer_reviews_df['SentimentScore'].apply(sentiment_bucket)
+
+  print(customer_reviews_df.head())
+  customer_reviews_df.to_csv('fact_customer_reviews_with_sentiment.csv', index=False)</code></pre>
+    </details>
+    </section>
+  <section class="grid grid-cols-1 gap-8 lg:grid-cols-12">
+    <div class="lg:col-span-7 space-y-6">
+      <h2 class="section-title">Project breakdown</h2>
+      <div class="steps space-y-6">
+        <div class="step gap-5 rounded-3xl border border-zinc-800/85 bg-zinc-900/70 p-6 shadow-lg shadow-black/10">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <div class="step-label">Business Context</div>
+            <div class="step-title">Understanding the e-commerce performance crisis</div>
+            <p class="step-body">Shop Easy, an online retailer, faced a critical business challenge: declining customer engagement and conversion rates despite increasing marketing expenses. Stakeholders needed clear answers about where revenue was leaking in the customer journey and which marketing channels were delivering ROI.</p>
+          </div>
+        </div>
+        <div class="step gap-5 rounded-3xl border border-zinc-800/85 bg-zinc-900/70 p-6 shadow-lg shadow-black/10">
+          <div class="step-num">2</div>
+          <div id="data-extraction-step" class="step-content">
+            <div class="step-label">Data Extraction & Cleaning</div>
+            <div class="step-title">Cleaning the tables used for analysis</div>
+            <p class="step-body">Used SQL to join clickstream, engagement, transaction, customer, and product data from multiple sources. Cleaned duplicate records, handled missing values, and created structured datasets for downstream analysis. Prepared fact tables (Customer Journey, Engagement, Reviews) and dimension tables (Customers, Geography, Products).</p>
+          </div>
+        </div>
+        <div class="step gap-5 rounded-3xl border border-zinc-800/85 bg-zinc-900/70 p-6 shadow-lg shadow-black/10">
+          <div class="step-num">3</div>
+          <div id="sentiment-analysis-step" class="step-content">
+            <div class="step-label">Sentiment Analysis</div>
+            <div class="step-title">Turning review text into usable fields</div>
+            <p class="step-body">Applied Natural Language Processing (NLP) techniques in Python to analyze customer reviews and social media comments. Scored sentiment as positive, neutral, or negative to surface recurring pain points in product quality, delivery, and customer service. Transformed unstructured text into measurable customer satisfaction metrics.</p>
+          </div>
+        </div>
+        <div class="step gap-5 rounded-3xl border border-zinc-800/85 bg-zinc-900/70 p-6 shadow-lg shadow-black/10">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <div class="step-label">Data Modeling</div>
+            <div class="step-title">Connecting facts and dimensions for reporting</div>
+            <p class="step-body">Structured the cleaned data into fact and dimension tables, connected customer, product, geography, engagement, journey, and review entities, and prepared consistent measures for analysis in Power BI.</p>
+            <img class="project-image section-image" src="Case%20Study/Model.png" alt="Power BI data model for the marketing analytics project" loading="lazy">
+          </div>
+        </div>
+        <div class="step gap-5 rounded-3xl border border-zinc-800/85 bg-zinc-900/70 p-6 shadow-lg shadow-black/10">
+          <div class="step-num">5</div>
+          <div class="step-content">
+            <div class="step-label">Dashboard Design</div>
+            <div class="step-title">Building the Power BI report</div>
+            <p class="step-body">Designed interactive dashboards to track Conversion Rate, Customer Engagement Rate, Average Order Value (AOV), and Customer Feedback Score. Built conversion funnel visualizations to identify primary drop-off stages, channel-level performance heatmaps to isolate low-ROI campaigns, and sentiment trend charts to reveal customer satisfaction patterns.</p>
+            <img class="project-image section-image" src="Case%20Study/Dashboard%20Page.png" alt="Marketing analytics dashboard showing conversion funnels and sentiment trends">
+            <div class="mt-6" aria-label="More dashboard views">
+              <div class="mb-3 text-sm font-semibold text-zinc-300">More dashboard views</div>
+              <div class="flex snap-x gap-4 overflow-x-auto pb-3">
+                <img class="w-80 flex-none snap-start rounded-2xl border border-zinc-800" src="Case%20Study/Screenshot%202026-09-08%20103729.png" alt="Marketing analytics dashboard view 2" loading="lazy">
+                <img class="w-80 flex-none snap-start rounded-2xl border border-zinc-800" src="Case%20Study/Screenshot%202026-09-08%20103746.png" alt="Marketing analytics dashboard view 3" loading="lazy">
+                <img class="w-80 flex-none snap-start rounded-2xl border border-zinc-800" src="Case%20Study/Screenshot%202026-09-08%20103755.png" alt="Marketing analytics dashboard view 4" loading="lazy">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="step gap-5 rounded-3xl border border-zinc-800/85 bg-zinc-900/70 p-6 shadow-lg shadow-black/10">
+          <div class="step-num">6</div>
+          <div class="step-content">
+            <div class="step-label">Key Findings & Insights</div>
+            <div class="step-title">Finding the main conversion and channel issues</div>
+            <p class="step-body">Analysis revealed customer drop-off concentrated in the cart checkout phase (43% abandonment) and low-performing channels (social media ads had 2.3x lower conversion than organic). Sentiment analysis showed delivery delays and product quality inconsistencies were primary friction points. These insights directly informed channel reallocations and operational improvements.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="border-t border-zinc-800/80 bg-zinc-950/90 px-6 py-6 text-sm text-zinc-500 backdrop-blur-xl">
+  <div class="mx-auto flex max-w-6xl flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+    <p>&copy; 2026 Ab</p>
+    <a href="../index.html#projects" class="hover:text-white">Back to portfolio</a>
+  </div>
+</footer>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const sqlSection = document.getElementById('sql-data-preparation');
+    const pythonSection = document.getElementById('python-sentiment-analysis');
+    const dataExtractionStep = document.getElementById('data-extraction-step');
+    const sentimentAnalysisStep = document.getElementById('sentiment-analysis-step');
+
+    dataExtractionStep.appendChild(sqlSection);
+    sentimentAnalysisStep.appendChild(pythonSection);
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ola Ride Analytics Dashboard | Abdullah Haroon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="project-style.css">
+</head>
+<body class="bg-zinc-950 text-white">
+<nav class="fixed inset-x-0 top-0 z-50 border-b border-zinc-800/80 bg-zinc-950/95 backdrop-blur-xl">
+  <div class="mx-auto flex max-w-7xl items-center justify-between gap-6 px-6 py-4">
+    <a href="../index.html" class="nav-logo">Portfolio</a>
+    <div class="nav-right">
+      <a href="../resume.pdf" target="_blank" rel="noopener" class="nav-resume">Resume</a>
+      <a href="../index.html#contact" class="nav-cta">Contact me</a>
+    </div>
+  </div>
+</nav>
+<header class="page-hero pt-28 pb-14">
+  <div class="hero-inner mx-auto max-w-6xl px-6">
+    <div class="eyebrow">SQL · Power BI · Mobility Analytics</div>
+    <h1 class="mt-4 text-4xl font-extrabold tracking-tight text-white sm:text-5xl">Ola Ride Analytics Dashboard</h1>
+    <p class="mt-6 max-w-3xl text-lg leading-8 text-zinc-400">An analytical view of Bengaluru ride bookings that turns booking status, vehicle type, cancellations, revenue, payments, and ratings into practical operating questions.</p>
+    <div class="mt-8 flex flex-wrap items-center gap-4">
+      <a class="btn primary" href="../index.html#projects">Back to projects</a>
+      <a class="btn" href="https://github.com/M-Abdu1a" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</header>
+<main class="content mx-auto max-w-6xl px-6 pb-16 space-y-10">
+  <section class="grid grid-cols-1 gap-4 max-w-md">
+    <div class="meta-card bg-zinc-900/70 border border-zinc-800 backdrop-blur-xl p-6 shadow-lg shadow-purple-500/5">
+      <div class="meta-label">Tools / Tech Stack</div>
+      <p class="mt-3 text-white">SQL Server · T-SQL · Power BI</p>
+    </div>
+  </section>
+
+  <section class="media-showcase rounded-[28px] border border-zinc-800/75 bg-zinc-900/60 p-6 shadow-2xl shadow-black/20 backdrop-blur-xl min-h-[420px]">
+    <div class="flex h-full flex-col justify-between gap-6">
+      <div class="flex items-center justify-between gap-4 text-xs uppercase tracking-[0.24em] text-zinc-400">
+        <span class="text-cyan-300/75">Booking Overview</span>
+        <span class="text-violet-300/75">Bengaluru Rides</span>
+      </div>
+      <img class="project-image" src="OLA%20Datset/Overview.png" alt="Ola ride analytics dashboard showing booking status and ride volume">
+      <div class="text-sm text-zinc-400">The overview brings booking status, total booking value, and ride volume together in one operating view.</div>
+    </div>
+  </section>
+
+  <section class="grid grid-cols-1 gap-8 lg:grid-cols-12">
+    <div class="lg:col-span-7 space-y-6">
+      <div class="steps space-y-6">
+        <div class="step gap-5 rounded-3xl border border-zinc-800/85 bg-zinc-900/70 p-6 shadow-lg shadow-black/10">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <div class="step-label">Data Setup</div>
+            <div class="step-title">Creating a focused ride analytics database</div>
+            <p class="step-body">Loaded the Ola Bengaluru ride data into SQL Server and used a dedicated database and source table as the foundation for repeatable analysis.</p>
+          </div>
+        </div>
+        <div class="step gap-5 rounded-3xl border border-zinc-800/85 bg-zinc-900/70 p-6 shadow-lg shadow-black/10">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <div class="step-label">Business Questions</div>
+            <div class="step-title">Separating successful rides from operational friction</div>
+            <p class="step-body">Created views for successful bookings, customer cancellations, driver cancellations caused by personal or car issues, incomplete rides, and total successful booking value.</p>
+          </div>
+        </div>
+        <div class="step gap-5 rounded-3xl border border-zinc-800/85 bg-zinc-900/70 p-6 shadow-lg shadow-black/10">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <div class="step-label">Vehicle Analysis</div>
+            <div class="step-title">Comparing distance and customer experience by vehicle</div>
+            <p class="step-body">Grouped average ride distance and average customer rating by vehicle type, with a dedicated Prime Sedan view for minimum and maximum rating checks.</p>
+            <div class="project-gallery section-image">
+              <figure><img class="project-image" src="OLA%20Datset/Screenshot%202026-09-12%20115700.png" alt="Ola dashboard vehicle type analysis"><figcaption>Vehicle type view</figcaption></figure>
+              <figure><img class="project-image" src="OLA%20Datset/Screenshot%202026-09-12%20115713.png" alt="Ola dashboard ratings analysis"><figcaption>Ratings view</figcaption></figure>
+              <figure><img class="project-image" src="OLA%20Datset/Screenshot%202026-09-12%20115707.png" alt="Ola dashboard revenue analysis"><figcaption>Revenue view</figcaption></figure>
+              <figure><img class="project-image" src="OLA%20Datset/Screenshot%202026-09-12%20115721.png" alt="Ola dashboard cancellation analysis"><figcaption>Cancellation view</figcaption></figure>
+              <figure><img class="project-image" src="OLA%20Datset/Desiging%20Dashboard%20in%20PPT.png" alt="Ola dashboard design prepared in PowerPoint"><figcaption>Dashboard design plan</figcaption></figure>
+            </div>
+          </div>
+        </div>
+        <div class="step gap-5 rounded-3xl border border-zinc-800/85 bg-zinc-900/70 p-6 shadow-lg shadow-black/10">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <div class="step-label">Reusable Reporting Layer</div>
+            <div class="step-title">Preparing SQL views for dashboard consumption</div>
+            <p class="step-body">Each view isolates one reporting question, making the dataset easier to validate and the dashboard easier to connect to and maintain.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <aside class="lg:col-span-5">
+      <div class="sticky top-28 space-y-4">
+        <div class="meta-card bg-zinc-900/70 border border-zinc-800 backdrop-blur-xl p-6">
+          <div class="meta-label">Dashboard Areas</div>
+          <p class="mt-3 text-white">Overall booking status · Vehicle type · Revenue · Cancellation · Ratings</p>
+        </div>
+        <div class="meta-card bg-zinc-900/70 border border-zinc-800 backdrop-blur-xl p-6">
+          <div class="meta-label">Example Questions</div>
+          <p class="mt-3 text-white">Which vehicle types travel farther? Where do cancellations originate? Which customers book most often?</p>
+        </div>
+      </div>
+    </aside>
+  </section>
+
+  <section>
+    <div class="section-title">SQL reporting views</div>
+    <pre class="overflow-x-auto rounded-3xl border border-zinc-700 bg-zinc-950 p-6 text-sm leading-7 text-white font-mono font-medium"><code>CREATE DATABASE Ola;
+USE Ola;
+
+-- Source table: Ola_Bengaluru_Ride_Data
+
+CREATE VIEW SuccessfulBookings AS
+SELECT * FROM Ola_Bengaluru_Ride_Data
+WHERE Booking_Status = 'Success';
+
+CREATE VIEW Avg_RideDistance_By_Vehicle AS
+SELECT Vehicle_Type, ROUND(AVG(Ride_Distance), 2) AS Avg_Ride_Distance
+FROM Ola_Bengaluru_Ride_Data
+GROUP BY Vehicle_Type;
+
+CREATE VIEW CustomerCancelled_Rides_Count AS
+SELECT COUNT(*) AS No_cancelled_by_customers
+FROM Ola_Bengaluru_Ride_Data
+WHERE Cancelled_Rides_by_Customer = 1;
+
+CREATE VIEW Top_5Customers AS
+SELECT TOP 5 Customer_ID, COUNT(Booking_ID) AS No_rides
+FROM Ola_Bengaluru_Ride_Data
+GROUP BY Customer_ID
+ORDER BY No_rides DESC;
+
+CREATE VIEW DriverCancelled_Personal_Car_Issues AS
+SELECT COUNT(*) AS No_cancelled_rides
+FROM Ola_Bengaluru_Ride_Data
+WHERE Reason_for_cancelling_by_Driver = 'Personal &amp; Car related issues';
+
+CREATE VIEW PrimeSedan_Ratings AS
+SELECT Vehicle_Type, MAX(Customer_Rating) AS Max_Rating,
+       MIN(Customer_Rating) AS Min_Rating
+FROM Ola_Bengaluru_Ride_Data
+WHERE Vehicle_Type = 'Prime Sedan'
+GROUP BY Vehicle_Type;
+
+CREATE VIEW UPIPayment AS
+SELECT * FROM Ola_Bengaluru_Ride_Data
+WHERE Payment_Method = 'UPI';
+
+CREATE VIEW AvgCustomer_Rating_By_Vehicle AS
+SELECT Vehicle_Type, AVG(Customer_Rating) AS Avg_Rating
+FROM Ola_Bengaluru_Ride_Data
+GROUP BY Vehicle_Type;
+
+CREATE VIEW TotalSuccessful_Booking_Value AS
+SELECT SUM(Booking_Value) AS Total_Value
+FROM Ola_Bengaluru_Ride_Data
+WHERE Booking_Status = 'Success';
+
+CREATE VIEW IncompleteRides_Details AS
+SELECT Booking_ID, Incomplete_Rides
+FROM Ola_Bengaluru_Ride_Data
+WHERE Incomplete_Rides = 1;</code></pre>
+  </section>
+</main>
+<footer class="border-t border-zinc-800/80 bg-zinc-950/90 px-6 py-6 text-sm text-zinc-500 backdrop-blur-xl">
+  <div class="mx-auto flex max-w-6xl flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+    <p>&copy; 2026 Ab</p>
+    <a href="../index.html#projects" class="hover:text-white">Back to portfolio</a>
+  </div>
+</footer>
+</body>
+</html>
